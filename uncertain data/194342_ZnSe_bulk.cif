@@ -1,0 +1,19 @@
+data_image0
+_chemical_formula_structural       Zn4Se4
+_chemical_formula_sum              "Zn4 Se4"
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_Cartn_x
+  _atom_site_Cartn_y
+  _atom_site_Cartn_z
+  _atom_site_occupancy
+  Zn  Zn1       1.0  0.0  0.0  0.0  1.0000
+  Zn  Zn2       1.0  2.87117  2.87117  0.0  1.0000
+  Zn  Zn3       1.0  2.87117  0.0  2.87117  1.0000
+  Zn  Zn4       1.0  0.0  2.87117  2.87117  1.0000
+  Se  Se1       1.0  1.43558  1.43558  4.30675  1.0000
+  Se  Se2       1.0  1.43558  4.30675  1.43558  1.0000
+  Se  Se3       1.0  4.30675  1.43558  1.43558  1.0000
+  Se  Se4       1.0  4.30675  4.30675  4.30675  1.0000

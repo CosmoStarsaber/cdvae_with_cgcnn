@@ -1,0 +1,41 @@
+data_image0
+_chemical_formula_structural       In8Pd8
+_chemical_formula_sum              "In8 Pd8"
+_cell_length_a       5.079699004382247
+_cell_length_b       6.257202280911255
+_cell_length_c       28.6416
+_cell_angle_alpha    89.87358149245163
+_cell_angle_beta     89.99762005396968
+_cell_angle_gamma    89.43053483135668
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  In  In1       1.0  0.552212  0.394732  0.332481  1.0000
+  In  In2       1.0  0.550872  0.886523  0.154056  1.0000
+  In  In3       1.0  0.550771  0.8893000000000001  0.331661  1.0000
+  In  In4       1.0  0.056269  0.88901  0.24515  1.0000
+  In  In5       1.0  0.552299  0.38735900000000006  0.155816  1.0000
+  In  In6       1.0  0.048379000000000005  0.391966  0.42269799999999996  1.0000
+  In  In7       1.0  0.047827  0.3850390000000001  0.244526  1.0000
+  In  In8       1.0  0.056752000000000004  0.8865790000000001  0.420144  1.0000
+  Pd  Pd1       1.0  0.054345999999999985  0.136763  0.15551299999999998  1.0000
+  Pd  Pd2       1.0  0.55198  0.639757  0.421881  1.0000
+  Pd  Pd3       1.0  0.052847000000000005  0.138666  0.332419  1.0000
+  Pd  Pd4       1.0  0.057591  0.6419080000000001  0.33324  1.0000
+  Pd  Pd5       1.0  0.554144  0.637851  0.244404  1.0000
+  Pd  Pd6       1.0  0.556854  0.14004900000000003  0.24369499999999997  1.0000
+  Pd  Pd7       1.0  0.052101  0.641156  0.155678  1.0000
+  Pd  Pd8       1.0  0.551322  0.139451  0.421094  1.0000

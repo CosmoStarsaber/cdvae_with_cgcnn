@@ -1,0 +1,32 @@
+data_image0
+_chemical_formula_structural       Co7
+_chemical_formula_sum              "Co7"
+_cell_length_a       15.000000000421048
+_cell_length_b       15.000000000421048
+_cell_length_c       15.000000000421048
+_cell_angle_alpha    90.0
+_cell_angle_beta     90.0
+_cell_angle_gamma    90.0
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Co  Co1       1.0  0.49999999999445793  0.5000000000074977  0.5000000000054867  1.0000
+  Co  Co2       1.0  0.5000000000064053  0.5000000000095488  0.49999999999684486  1.0000
+  Co  Co3       1.0  0.4999999999935349  0.4999999999904512  0.49999999998596506  1.0000
+  Co  Co4       1.0  0.4999999999968102  0.49999999999334344  0.5000000000002192  1.0000
+  Co  Co5       1.0  0.49999999999416  0.5000000000049907  0.4999999999897616  1.0000
+  Co  Co6       1.0  0.5000000000072773  0.49999999999614136  0.4999999999902438  1.0000
+  Co  Co7       1.0  0.49999999999272277  0.4999999999958213  0.500000000014035  1.0000

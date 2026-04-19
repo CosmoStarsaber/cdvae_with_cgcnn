@@ -1,0 +1,672 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>ioChem-BD Browse - Barcelona Supercomputing Center: NNP_Cu_O</title>
+        <meta charset="utf-8">
+        <meta name="Generator" content="DSpace none" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <rdf:RDF xmlns="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+            <Work xmlns:dc="http://purl.org/dc/elements/1.1/" rdf:about="">
+                <license rdf:resource="http://creativecommons.org/licenses/by/4.0/"/>
+            </Work>
+            <License rdf:about="http://creativecommons.org/licenses/by/4.0/">
+                <permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+                <permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+                <permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+                <requires rdf:resource="http://creativecommons.org/ns#Attribution"/>
+                <requires rdf:resource="http://creativecommons.org/ns#Notice"/>
+  
+            </License>
+        </rdf:RDF>
+        <link rel="shortcut icon" href="/browse/favicon.ico" type="image/x-icon"/>
+   	    <link rel="stylesheet" href="/browse/static/css/bootstrap/bootstrap-theme.css" type="text/css" />   	    
+   	    <link rel="stylesheet" href="/browse/static/css/bootstrap/bootstrap.css" type="text/css" />
+   	    <link rel="stylesheet" href="/browse/static/css/jquery-ui-1.10.3.custom/redmond/jquery-ui-1.10.3.custom.min.css" />
+   	    <link rel="stylesheet" href="/browse/static/css/iochem-bd-theme.css" />
+
+        <link rel="alternate" type="application/rdf+xml" title="Items in Collection" href="/browse/feed/rss_1.0/100/281008"/>
+
+        <link rel="alternate" type="application/rss+xml" title="Items in Collection" href="/browse/feed/rss_2.0/100/281008"/>
+
+        <link rel="alternate" type="application/rss+xml" title="Items in Collection" href="/browse/feed/atom_1.0/100/281008"/>
+
+        <link rel="search" type="application/opensearchdescription+xml" href="/browse/open-search/description.xml" title="DSpace"/>
+    
+	<script type='text/javascript' src="/browse/static/js/jquery/jquery-1.10.2.min.js"></script>
+	<script type='text/javascript' src='/browse/static/js/jquery/jquery-ui-1.10.3.custom.min.js'></script>
+	<script type='text/javascript' src='/browse/static/js/bootstrap/bootstrap.min.js'></script>
+	<script type='text/javascript' src='/browse/static/js/holder.js'></script>
+	<script type="text/javascript" src="/browse/utils.js"></script>
+    <script type="text/javascript" src="/browse/static/js/choice-support.js"> </script>
+
+    
+    
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.9.1/dist/cookieconsent.css" media="print" onload="this.media='all'">
+    <!-- Google tag (gtag.js) -->
+    <script type="text/plain" data-cookiecategory="analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-PXNS3K4MT0"></script>
+    <script type="text/plain" data-cookiecategory="analytics">
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-PXNS3K4MT0');
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.9.1/dist/cookieconsent.js"></script>
+
+    <script>
+        window.addEventListener('load', function () {
+            // obtain cookieconsent plugin
+            var cookieconsent = initCookieConsent();    
+            // run plugin with config object
+            cookieconsent.run({
+                autorun: true,
+                current_lang: 'en',
+                autoclear_cookies: true,
+                page_scripts: true,
+    
+                onFirstAction: function(user_preferences, cookie){},    
+                onAccept: function (cookie) {},    
+                onChange: function (cookie, changed_preferences) {},
+    
+                languages: {
+                    en: {
+                        consent_modal: {
+                            title: 'I use cookies',
+                            description: 'Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only upon approval.',
+                            primary_btn: {
+                                text: 'Accept',
+                                role: 'accept_all'              // 'accept_selected' or 'accept_all'
+                            },
+                            secondary_btn: {
+                                text: 'Settings',
+                                role: 'settings'                // 'settings' or 'accept_necessary'
+                            }
+                        },
+                        settings_modal: {
+                            title: 'Cookie preferences',
+                            save_settings_btn: 'Save settings',
+                            accept_all_btn: 'Accept all',
+                            reject_all_btn: 'Reject all',      
+                            cookie_table_headers: [
+                                {col1: 'Name'},
+                                {col2: 'Domain'},
+                                {col3: 'Expiration'},
+                                {col4: 'Description'},
+                                {col5: 'Type'}
+                            ],
+                            blocks: [
+                                {
+                                    title: 'Cookie usage',
+                                    description: 'I use cookies to ensure the basic functionalities of the website and to enhance your online experience. You can choose for each category to opt-in/out whenever you want.'
+                                }, {
+                                    title: 'Strictly necessary cookies',
+                                    description: 'These cookies are essential for the proper functioning of my website. Without these cookies, the website would not work properly.',
+                                    toggle: {
+                                        value: 'necessary',
+                                        enabled: true,
+                                        readonly: true
+                                    }
+                                }, {
+                                    title: 'Analytics cookies',
+                                    description: 'These cookies collect information about how you use the website, which pages you visited and which links you clicked on. All of the data is anonymized and cannot be used to identify you.',
+                                    toggle: {
+                                        value: 'analytics',
+                                        enabled: true,
+                                        readonly: false
+                                    },
+                                    cookie_table: [
+                                        {
+                                            col1: '^_ga',
+                                            col2: 'google.com',
+                                            col3: '2 years',
+                                            col4: 'description ...',
+                                            col5: 'Permanent cookie',
+                                            is_regex: true
+                                        },
+                                        {
+                                            col1: '_gid',
+                                            col2: 'google.com',
+                                            col3: '1 day',
+                                            col4: 'description ...',
+                                            col5: 'Permanent cookie'
+                                        }
+                                    ]
+                                }, {
+                                    title: 'More information',
+                                    description: 'For any queries in relation to our policy on cookies and your choices, please contact with platform administrators.',
+                                }
+                            ]
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+    
+	 <script type="text/javascript" src="/browse/static/js/highslide/highslide-full.js"></script>
+	 <link rel="stylesheet" type="text/css" href="/browse/static/css/highslide/highslide.css" />
+	 <!--[if lt IE 7]>
+	 <link rel="stylesheet" type="text/css" href="/browse/static/css/highslide/highslide-ie6.css" />
+	 <![endif]-->
+	  <script type="text/javascript">
+	         hs.graphicsDir = '/browse/image/highslide/graphics/';
+	         hs.showCredits = false;
+	         hs.dynamicallyUpdateAnchors = true;
+	 </script>
+	 <script type="text/javascript">
+	         hs.Expander.prototype.onMouseOut = function (sender) {  sender.close();};
+	         hs.Expander.prototype.onAfterExpand = function (sender) {  if (!sender.mouseIsOver) sender.close();}
+	 </script>
+	 <script>
+	  		window.onload = function() {
+	  			var table = document.querySelector('div.highslide-container > table');
+	  			if (table) {
+	  			  table.setAttribute('role', 'presentation');
+	  			}		 
+	  		}
+	 </script>
+
+ 	<script type="text/javascript" src="/browse/static/js/bootstrap-table/bootstrap-table.min.js"></script>
+ 	<link rel="stylesheet" type="text/css" href="/browse/static/css/bootstrap-table/bootstrap-table.min.css" /> 
+
+    
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="/browse/static/js/html5shiv.js"></script>
+  <script src="/browse/static/js/respond.min.js"></script>
+<![endif]-->
+    </head>
+
+    
+    
+    <body class="undernavigation">
+<a class="sr-only" href="#content">Skip navigation</a>
+<header class="navbar navbar-fixed-top navbar-custom">    
+    
+            <div class="container">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+       <div class="navbar-header">
+         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-label="Toggle navigation">
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </button>
+         <a class="navbar-brand" href="/browse"><img src="/browse/image/logo-iochembd-browse-white.png" class="img-responsive" alt="ioChem-BD Browse logo" /> <span class="sr-only">ioChem-BD Browse</span></a>
+       </div>
+
+       <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">         
+       <div class="nav navbar-nav navbar-right">
+		
+		
+
+     
+		<ul class="nav navbar-nav navbar-right">
+		 
+		
+		  <li class="dropdown">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse <b class="caret"></b></a>
+             <ul class="dropdown-menu">
+               <li><a href="/browse/community-list">Communities<br/>&amp;&nbsp;Collections</a></li>
+				<li class="divider"></li>
+        <li class="dropdown-header">Browse Items by:</li>
+				
+				
+				
+				      			<li><a href="/browse/browse?type=dateissued">Issue Date</a></li>
+					
+				      			<li><a href="/browse/browse?type=author">Author</a></li>
+					
+				      			<li><a href="/browse/browse?type=title">Title</a></li>
+					
+				      			<li><a href="/browse/browse?type=subject">Subject</a></li>
+					
+				    
+				
+            </ul>
+          </li>
+		
+		
+		
+		
+		
+		
+         <li class="dropdown">
+         
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Sign on to: <b class="caret"></b></a>
+	             
+             <ul class="dropdown-menu">
+             
+               <li><a href="/browse/mydspace?action=redirectToCreate">Create module </a></li>
+               <li><a href="/browse/mydspace">Browse module</a></li>
+               <li><a href="/browse/subscribe">Receive email<br/>updates</a></li>
+               <li><a href="/browse/profile">Edit Profile</a></li>
+			
+		
+             </ul>
+           </li>          
+       
+          </ul>
+          
+	
+	<form method="get" action="/browse/simple-search" class="navbar-form navbar-right">
+	    <div class="input-group">
+	      <label for="tequery" class="sr-only" style="background-color:white">Search on Browse module</label>
+	      <input type="text" class="form-control" placeholder="Search&nbsp;Browse" name="query" id="tequery" size="20" />
+          <span class="input-group-btn">
+       	  	<button type="submit" class="btn btn-secondary" ><span class="glyphicon glyphicon-search"></span><span class="sr-only">Search</span></button>	  
+          </span>
+       </div>        
+	</form></div>
+    </nav>
+
+            </div>
+
+</header>
+
+<main id="content" role="main" style="padding-top:65px">
+
+<div class="container">
+                
+
+
+
+  
+
+<ol class="breadcrumb btn-success">
+
+  <li><a href="/browse/">Barcelona Supercomputing Center</a></li>
+
+  <li><a href="/browse/handle/100/1">BSC host</a></li>
+
+</ol>
+
+</div>                
+
+        
+<div class="container">
+
+	<div class="row">
+		<div class="col-md-9">
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<h1 class="sr-only">ioChem-BD Browse module - collection page</h1>
+    <div class="well">
+    <div class="row">
+    	<div class="col-md-8">
+    		<h2>NNP_Cu_O
+
+		<small>Collection home page</small>
+		
+      
+      		</h2>      		
+         </div>
+
+	</div>
+
+
+	  <p class="copyrightText">Share - copy and redistribute the material in any medium or format. Adapt -  remix, transform, and build upon the material for any purpose, even commercially. The licensor cannot revoke these freedoms as long as you follow the license terms.</p>	
+  </div>
+  
+
+<div class="well">
+
+			Please use this identifier to cite or link to this collection:
+			<span>DOI: <a href="https://doi.org/10.19061/iochem-bd-6-228" target="_blank">10.19061/iochem-bd-6-228</a></span>			
+			
+  			<p class="collectionJournalDescription">This dataset derived results are published in:</p>
+					<p class="collectionJournalLine"><span style='font-style:oblique'>Manuscript title</span>: Stability and lifetime of diffusion-trapped oxygen in oxide-derived copper CO2 reduction electrocatalysts</p>
+					<p class="collectionJournalLine"><span style='font-style:oblique'>Journal</span>: Nature Catalysis</p>										
+						  						  	
+					<p class="collectionJournalLine"><span style='font-style:oblique'>DOI</span>: <a href="https://doi.org/10.1038/s41929-024-01132-5" target="_blank">10.1038/s41929-024-01132-5</a></p>
+					  	
+
+</div>
+
+
+    
+
+
+  
+
+
+
+
+  
+  
+  <div class="panel panel-primary">
+  	<div class="panel-heading">
+        Browse
+	</div>
+	<div class="panel-body">
+	
+
+	<form method="get" class="btn-group" action="/browse/handle/100/281008/browse">
+		<input type="hidden" name="type" value="dateissued"/>
+		
+		<input type="submit" class="btn btn-default" name="submit_browse" value="Issue Date"/>
+	</form>
+
+	<form method="get" class="btn-group" action="/browse/handle/100/281008/browse">
+		<input type="hidden" name="type" value="author"/>
+		
+		<input type="submit" class="btn btn-default" name="submit_browse" value="Author"/>
+	</form>
+
+	<form method="get" class="btn-group" action="/browse/handle/100/281008/browse">
+		<input type="hidden" name="type" value="title"/>
+		
+		<input type="submit" class="btn btn-default" name="submit_browse" value="Title"/>
+	</form>
+
+	<form method="get" class="btn-group" action="/browse/handle/100/281008/browse">
+		<input type="hidden" name="type" value="subject"/>
+		
+		<input type="submit" class="btn btn-default" name="submit_browse" value="Subject"/>
+	</form>
+	</div>
+</div>
+
+
+
+
+
+
+    
+<div class="row">
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+    
+    
+    
+    <div class="browse_range">
+        Collection&#39;s Items (Sorted by Submit Date in Descending order): 1 to 20 of 6322
+    </div>
+
+    
+    <div class="prev-next-links">
+
+      &nbsp;<a href="/browse/handle/100/281008?offset=20">next&nbsp;&gt;</a>
+
+    </div>
+
+
+
+      <table align="center" class="table" summary="This table browses all dspace content"  id="browsetable" data-toggle="table" data-show-toggle="true" data-search="true" data-show-columns="true" >
+<colgroup><col width="80" /><col width="140" /><col width="20%" /><col width="20%" /><col width="20%" /><col width="10%" /><col width="5%" /><col width="5%" /><col width="5%" /><col width="20" /><col width="20" /><col width="20" /></colgroup>
+<thead>
+  <tr>
+<th data-field="Preview" id="t1" class="oddRowEvenCol">Preview</th><th data-field="Issue Date" id="t2" class="oddRowOddCol">Issue Date</th><th data-field="Title" id="t3" class="oddRowEvenCol"><strong>Title</strong></th><th data-field="Author(s)" id="t4" class="oddRowOddCol">Author(s)</th><th data-field="Program" id="t5" class="oddRowEvenCol">Program</th><th data-field="Calculation type" id="t6" class="oddRowOddCol">Calculation type</th><th data-field="Method(s)" id="t7" class="oddRowEvenCol">Method(s)</th><th data-field="Basis Set" id="t8" class="oddRowOddCol">Basis Set</th><th data-field="Energy" id="t9" class="oddRowEvenCol">Energy</th><th data-field="Solv." id="t10" class="oddRowOddCol">Solv.</th><th data-field="Vibr." id="t11" class="oddRowEvenCol">Vibr.</th><th data-field="Orb." id="t12" class="oddRowOddCol">Orb.</th>  </tr></thead><tr><td headers="t1" class="evenRowEvenCol" ><a href="/browse/retrieve/3484424/thumbnail.jpeg" class="highslide" onmouseover="return this.onclick()" onclick="return hs.expand(this)"  style="margin: 0 0 0 0"><img src="/browse/retrieve/3484424/thumbnail.jpeg" alt="thumbnail.jpeg" width="80.0" height="80.0" border="0"/></a></td><td headers="t2" class="evenRowOddCol" nowrap="nowrap" align="right">19-Apr-2024</td><td headers="t3" class="evenRowEvenCol" ><strong><a href="/browse/handle/100/320165">final_dataset_and_10_NNPs</a></strong></td><td headers="t4" class="evenRowOddCol" ><em><a href="/browse/browse?type=author&amp;value=Lian%2C+Zan">Lian,&#x20;Zan</a></em></td><td headers="t5" class="evenRowEvenCol" ><em>LAMMPS; 29&#x20;Sep&#x20;2021&#x20;-&#x20;Update&#x20;3</em></td><td headers="t6" class="evenRowOddCol" ><em>Molecular&#x20;Dynamics</em></td><td headers="t7" class="evenRowEvenCol" >-</td><td headers="t8" class="evenRowOddCol" >-</td><td headers="t9" class="evenRowEvenCol" >-</td><td headers="t10" class="evenRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t11" class="evenRowEvenCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t12" class="evenRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td></tr>
+<tr><td headers="t1" class="oddRowEvenCol" ><a href="/browse/retrieve/3482045/thumbnail.jpeg" class="highslide" onmouseover="return this.onclick()" onclick="return hs.expand(this)"  style="margin: 0 0 0 0"><img src="/browse/retrieve/3482045/thumbnail.jpeg" alt="thumbnail.jpeg" width="80.0" height="80.0" border="0"/></a></td><td headers="t2" class="oddRowOddCol" nowrap="nowrap" align="right">21-Mar-2024</td><td headers="t3" class="oddRowEvenCol" ><strong><a href="/browse/handle/100/319876">&#x2F;NNP_application&#x2F;Cu2O_111_reconstitution&#x20;annealing_1100K</a></strong></td><td headers="t4" class="oddRowOddCol" ><em><a href="/browse/browse?type=author&amp;value=Lian%2C+Zan">Lian,&#x20;Zan</a></em></td><td headers="t5" class="oddRowEvenCol" ><em>LAMMPS; 29&#x20;Sep&#x20;2021&#x20;-&#x20;Update&#x20;3</em></td><td headers="t6" class="oddRowOddCol" ><em>Molecular&#x20;Dynamics</em></td><td headers="t7" class="oddRowEvenCol" >-</td><td headers="t8" class="oddRowOddCol" >-</td><td headers="t9" class="oddRowEvenCol" >-</td><td headers="t10" class="oddRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t11" class="oddRowEvenCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t12" class="oddRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td></tr>
+<tr><td headers="t1" class="evenRowEvenCol" ><a href="/browse/retrieve/3482033/thumbnail.jpeg" class="highslide" onmouseover="return this.onclick()" onclick="return hs.expand(this)"  style="margin: 0 0 0 0"><img src="/browse/retrieve/3482033/thumbnail.jpeg" alt="thumbnail.jpeg" width="80.0" height="80.0" border="0"/></a></td><td headers="t2" class="evenRowOddCol" nowrap="nowrap" align="right">21-Mar-2024</td><td headers="t3" class="evenRowEvenCol" ><strong><a href="/browse/handle/100/319875">&#x2F;NNP_application&#x2F;deposition&#x20;192_annealing_700K</a></strong></td><td headers="t4" class="evenRowOddCol" ><em><a href="/browse/browse?type=author&amp;value=Lian%2C+Zan">Lian,&#x20;Zan</a></em></td><td headers="t5" class="evenRowEvenCol" ><em>LAMMPS; 29&#x20;Sep&#x20;2021&#x20;-&#x20;Update&#x20;3</em></td><td headers="t6" class="evenRowOddCol" ><em>Molecular&#x20;Dynamics</em></td><td headers="t7" class="evenRowEvenCol" >-</td><td headers="t8" class="evenRowOddCol" >-</td><td headers="t9" class="evenRowEvenCol" >-</td><td headers="t10" class="evenRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t11" class="evenRowEvenCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t12" class="evenRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td></tr>
+<tr><td headers="t1" class="oddRowEvenCol" ><a href="/browse/retrieve/3482021/thumbnail.jpeg" class="highslide" onmouseover="return this.onclick()" onclick="return hs.expand(this)"  style="margin: 0 0 0 0"><img src="/browse/retrieve/3482021/thumbnail.jpeg" alt="thumbnail.jpeg" width="80.0" height="80.0" border="0"/></a></td><td headers="t2" class="oddRowOddCol" nowrap="nowrap" align="right">21-Mar-2024</td><td headers="t3" class="oddRowEvenCol" ><strong><a href="/browse/handle/100/319874">&#x2F;NNP_application&#x2F;deposition&#x20;300_annealing_1100K</a></strong></td><td headers="t4" class="oddRowOddCol" ><em><a href="/browse/browse?type=author&amp;value=Lian%2C+Zan">Lian,&#x20;Zan</a></em></td><td headers="t5" class="oddRowEvenCol" ><em>LAMMPS; 29&#x20;Sep&#x20;2021&#x20;-&#x20;Update&#x20;3</em></td><td headers="t6" class="oddRowOddCol" ><em>Molecular&#x20;Dynamics</em></td><td headers="t7" class="oddRowEvenCol" >-</td><td headers="t8" class="oddRowOddCol" >-</td><td headers="t9" class="oddRowEvenCol" >-</td><td headers="t10" class="oddRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t11" class="oddRowEvenCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t12" class="oddRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td></tr>
+<tr><td headers="t1" class="evenRowEvenCol" ><a href="/browse/retrieve/3482009/thumbnail.jpeg" class="highslide" onmouseover="return this.onclick()" onclick="return hs.expand(this)"  style="margin: 0 0 0 0"><img src="/browse/retrieve/3482009/thumbnail.jpeg" alt="thumbnail.jpeg" width="80.0" height="80.0" border="0"/></a></td><td headers="t2" class="evenRowOddCol" nowrap="nowrap" align="right">21-Mar-2024</td><td headers="t3" class="evenRowEvenCol" ><strong><a href="/browse/handle/100/319873">&#x2F;NNP_application&#x2F;deposition&#x20;192_annealing_1100K</a></strong></td><td headers="t4" class="evenRowOddCol" ><em><a href="/browse/browse?type=author&amp;value=Lian%2C+Zan">Lian,&#x20;Zan</a></em></td><td headers="t5" class="evenRowEvenCol" ><em>LAMMPS; 29&#x20;Sep&#x20;2021&#x20;-&#x20;Update&#x20;3</em></td><td headers="t6" class="evenRowOddCol" ><em>Molecular&#x20;Dynamics</em></td><td headers="t7" class="evenRowEvenCol" >-</td><td headers="t8" class="evenRowOddCol" >-</td><td headers="t9" class="evenRowEvenCol" >-</td><td headers="t10" class="evenRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t11" class="evenRowEvenCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t12" class="evenRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td></tr>
+<tr><td headers="t1" class="oddRowEvenCol" ><a href="/browse/retrieve/3424126/thumbnail.jpeg" class="highslide" onmouseover="return this.onclick()" onclick="return hs.expand(this)"  style="margin: 0 0 0 0"><img src="/browse/retrieve/3424126/thumbnail.jpeg" alt="thumbnail.jpeg" width="80.0" height="80.0" border="0"/></a></td><td headers="t2" class="oddRowOddCol" nowrap="nowrap" align="right">10-Nov-2023</td><td headers="t3" class="oddRowEvenCol" ><strong><a href="/browse/handle/100/313986">&#x2F;NNP_application&#x2F;annealing_convergence_test&#x2F;annealing_rate&#x2F;03&#x20;20ns</a></strong></td><td headers="t4" class="oddRowOddCol" ><em><a href="/browse/browse?type=author&amp;value=Lian%2C+Zan">Lian,&#x20;Zan</a></em></td><td headers="t5" class="oddRowEvenCol" ><em>LAMMPS; 29&#x20;Sep&#x20;2021&#x20;-&#x20;Update&#x20;3</em></td><td headers="t6" class="oddRowOddCol" ><em>Molecular&#x20;Dynamics</em></td><td headers="t7" class="oddRowEvenCol" >-</td><td headers="t8" class="oddRowOddCol" >-</td><td headers="t9" class="oddRowEvenCol" >-</td><td headers="t10" class="oddRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t11" class="oddRowEvenCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t12" class="oddRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td></tr>
+<tr><td headers="t1" class="evenRowEvenCol" ><a href="/browse/retrieve/3424114/thumbnail.jpeg" class="highslide" onmouseover="return this.onclick()" onclick="return hs.expand(this)"  style="margin: 0 0 0 0"><img src="/browse/retrieve/3424114/thumbnail.jpeg" alt="thumbnail.jpeg" width="80.0" height="80.0" border="0"/></a></td><td headers="t2" class="evenRowOddCol" nowrap="nowrap" align="right">10-Nov-2023</td><td headers="t3" class="evenRowEvenCol" ><strong><a href="/browse/handle/100/313985">&#x2F;NNP_application&#x2F;annealing_convergence_test&#x2F;annealing_rate&#x2F;13&#x20;10ns</a></strong></td><td headers="t4" class="evenRowOddCol" ><em><a href="/browse/browse?type=author&amp;value=Lian%2C+Zan">Lian,&#x20;Zan</a></em></td><td headers="t5" class="evenRowEvenCol" ><em>LAMMPS; 29&#x20;Sep&#x20;2021&#x20;-&#x20;Update&#x20;3</em></td><td headers="t6" class="evenRowOddCol" ><em>Molecular&#x20;Dynamics</em></td><td headers="t7" class="evenRowEvenCol" >-</td><td headers="t8" class="evenRowOddCol" >-</td><td headers="t9" class="evenRowEvenCol" >-</td><td headers="t10" class="evenRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t11" class="evenRowEvenCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t12" class="evenRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td></tr>
+<tr><td headers="t1" class="oddRowEvenCol" ><a href="/browse/retrieve/3424102/thumbnail.jpeg" class="highslide" onmouseover="return this.onclick()" onclick="return hs.expand(this)"  style="margin: 0 0 0 0"><img src="/browse/retrieve/3424102/thumbnail.jpeg" alt="thumbnail.jpeg" width="80.0" height="80.0" border="0"/></a></td><td headers="t2" class="oddRowOddCol" nowrap="nowrap" align="right">10-Nov-2023</td><td headers="t3" class="oddRowEvenCol" ><strong><a href="/browse/handle/100/313984">&#x2F;NNP_application&#x2F;annealing_convergence_test&#x2F;annealing_rate&#x2F;13&#x20;16ns</a></strong></td><td headers="t4" class="oddRowOddCol" ><em><a href="/browse/browse?type=author&amp;value=Lian%2C+Zan">Lian,&#x20;Zan</a></em></td><td headers="t5" class="oddRowEvenCol" ><em>LAMMPS; 29&#x20;Sep&#x20;2021&#x20;-&#x20;Update&#x20;3</em></td><td headers="t6" class="oddRowOddCol" ><em>Molecular&#x20;Dynamics</em></td><td headers="t7" class="oddRowEvenCol" >-</td><td headers="t8" class="oddRowOddCol" >-</td><td headers="t9" class="oddRowEvenCol" >-</td><td headers="t10" class="oddRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t11" class="oddRowEvenCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t12" class="oddRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td></tr>
+<tr><td headers="t1" class="evenRowEvenCol" ><a href="/browse/retrieve/3424090/thumbnail.jpeg" class="highslide" onmouseover="return this.onclick()" onclick="return hs.expand(this)"  style="margin: 0 0 0 0"><img src="/browse/retrieve/3424090/thumbnail.jpeg" alt="thumbnail.jpeg" width="80.0" height="80.0" border="0"/></a></td><td headers="t2" class="evenRowOddCol" nowrap="nowrap" align="right">10-Nov-2023</td><td headers="t3" class="evenRowEvenCol" ><strong><a href="/browse/handle/100/313983">&#x2F;NNP_application&#x2F;annealing_convergence_test&#x2F;annealing_rate&#x2F;13&#x20;20ns</a></strong></td><td headers="t4" class="evenRowOddCol" ><em><a href="/browse/browse?type=author&amp;value=Lian%2C+Zan">Lian,&#x20;Zan</a></em></td><td headers="t5" class="evenRowEvenCol" ><em>LAMMPS; 29&#x20;Sep&#x20;2021&#x20;-&#x20;Update&#x20;3</em></td><td headers="t6" class="evenRowOddCol" ><em>Molecular&#x20;Dynamics</em></td><td headers="t7" class="evenRowEvenCol" >-</td><td headers="t8" class="evenRowOddCol" >-</td><td headers="t9" class="evenRowEvenCol" >-</td><td headers="t10" class="evenRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t11" class="evenRowEvenCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t12" class="evenRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td></tr>
+<tr><td headers="t1" class="oddRowEvenCol" ><a href="/browse/retrieve/3424078/thumbnail.jpeg" class="highslide" onmouseover="return this.onclick()" onclick="return hs.expand(this)"  style="margin: 0 0 0 0"><img src="/browse/retrieve/3424078/thumbnail.jpeg" alt="thumbnail.jpeg" width="80.0" height="80.0" border="0"/></a></td><td headers="t2" class="oddRowOddCol" nowrap="nowrap" align="right">10-Nov-2023</td><td headers="t3" class="oddRowEvenCol" ><strong><a href="/browse/handle/100/313982">&#x2F;NNP_application&#x2F;annealing_convergence_test&#x2F;annealing_rate&#x2F;18&#x20;16ns</a></strong></td><td headers="t4" class="oddRowOddCol" ><em><a href="/browse/browse?type=author&amp;value=Lian%2C+Zan">Lian,&#x20;Zan</a></em></td><td headers="t5" class="oddRowEvenCol" ><em>LAMMPS; 29&#x20;Sep&#x20;2021&#x20;-&#x20;Update&#x20;3</em></td><td headers="t6" class="oddRowOddCol" ><em>Molecular&#x20;Dynamics</em></td><td headers="t7" class="oddRowEvenCol" >-</td><td headers="t8" class="oddRowOddCol" >-</td><td headers="t9" class="oddRowEvenCol" >-</td><td headers="t10" class="oddRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t11" class="oddRowEvenCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t12" class="oddRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td></tr>
+<tr><td headers="t1" class="evenRowEvenCol" ><a href="/browse/retrieve/3424066/thumbnail.jpeg" class="highslide" onmouseover="return this.onclick()" onclick="return hs.expand(this)"  style="margin: 0 0 0 0"><img src="/browse/retrieve/3424066/thumbnail.jpeg" alt="thumbnail.jpeg" width="80.0" height="80.0" border="0"/></a></td><td headers="t2" class="evenRowOddCol" nowrap="nowrap" align="right">10-Nov-2023</td><td headers="t3" class="evenRowEvenCol" ><strong><a href="/browse/handle/100/313981">&#x2F;NNP_application&#x2F;annealing_convergence_test&#x2F;annealing_rate&#x2F;18&#x20;20ns</a></strong></td><td headers="t4" class="evenRowOddCol" ><em><a href="/browse/browse?type=author&amp;value=Lian%2C+Zan">Lian,&#x20;Zan</a></em></td><td headers="t5" class="evenRowEvenCol" ><em>LAMMPS; 29&#x20;Sep&#x20;2021&#x20;-&#x20;Update&#x20;3</em></td><td headers="t6" class="evenRowOddCol" ><em>Molecular&#x20;Dynamics</em></td><td headers="t7" class="evenRowEvenCol" >-</td><td headers="t8" class="evenRowOddCol" >-</td><td headers="t9" class="evenRowEvenCol" >-</td><td headers="t10" class="evenRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t11" class="evenRowEvenCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t12" class="evenRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td></tr>
+<tr><td headers="t1" class="oddRowEvenCol" ><a href="/browse/retrieve/3424054/thumbnail.jpeg" class="highslide" onmouseover="return this.onclick()" onclick="return hs.expand(this)"  style="margin: 0 0 0 0"><img src="/browse/retrieve/3424054/thumbnail.jpeg" alt="thumbnail.jpeg" width="80.0" height="80.0" border="0"/></a></td><td headers="t2" class="oddRowOddCol" nowrap="nowrap" align="right">10-Nov-2023</td><td headers="t3" class="oddRowEvenCol" ><strong><a href="/browse/handle/100/313980">&#x2F;NNP_application&#x2F;annealing_convergence_test&#x2F;annealing_rate&#x2F;23&#x20;16ns</a></strong></td><td headers="t4" class="oddRowOddCol" ><em><a href="/browse/browse?type=author&amp;value=Lian%2C+Zan">Lian,&#x20;Zan</a></em></td><td headers="t5" class="oddRowEvenCol" ><em>LAMMPS; 29&#x20;Sep&#x20;2021&#x20;-&#x20;Update&#x20;3</em></td><td headers="t6" class="oddRowOddCol" ><em>Molecular&#x20;Dynamics</em></td><td headers="t7" class="oddRowEvenCol" >-</td><td headers="t8" class="oddRowOddCol" >-</td><td headers="t9" class="oddRowEvenCol" >-</td><td headers="t10" class="oddRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t11" class="oddRowEvenCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t12" class="oddRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td></tr>
+<tr><td headers="t1" class="evenRowEvenCol" ><a href="/browse/retrieve/3424042/thumbnail.jpeg" class="highslide" onmouseover="return this.onclick()" onclick="return hs.expand(this)"  style="margin: 0 0 0 0"><img src="/browse/retrieve/3424042/thumbnail.jpeg" alt="thumbnail.jpeg" width="80.0" height="80.0" border="0"/></a></td><td headers="t2" class="evenRowOddCol" nowrap="nowrap" align="right">10-Nov-2023</td><td headers="t3" class="evenRowEvenCol" ><strong><a href="/browse/handle/100/313979">&#x2F;NNP_application&#x2F;annealing_convergence_test&#x2F;annealing_rate&#x2F;23&#x20;20ns</a></strong></td><td headers="t4" class="evenRowOddCol" ><em><a href="/browse/browse?type=author&amp;value=Lian%2C+Zan">Lian,&#x20;Zan</a></em></td><td headers="t5" class="evenRowEvenCol" ><em>LAMMPS; 29&#x20;Sep&#x20;2021&#x20;-&#x20;Update&#x20;3</em></td><td headers="t6" class="evenRowOddCol" ><em>Molecular&#x20;Dynamics</em></td><td headers="t7" class="evenRowEvenCol" >-</td><td headers="t8" class="evenRowOddCol" >-</td><td headers="t9" class="evenRowEvenCol" >-</td><td headers="t10" class="evenRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t11" class="evenRowEvenCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t12" class="evenRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td></tr>
+<tr><td headers="t1" class="oddRowEvenCol" ><a href="/browse/retrieve/3424030/thumbnail.jpeg" class="highslide" onmouseover="return this.onclick()" onclick="return hs.expand(this)"  style="margin: 0 0 0 0"><img src="/browse/retrieve/3424030/thumbnail.jpeg" alt="thumbnail.jpeg" width="80.0" height="80.0" border="0"/></a></td><td headers="t2" class="oddRowOddCol" nowrap="nowrap" align="right">10-Nov-2023</td><td headers="t3" class="oddRowEvenCol" ><strong><a href="/browse/handle/100/313978">&#x2F;NNP_application&#x2F;annealing_convergence_test&#x2F;annealing_rate&#x2F;08&#x20;10ns</a></strong></td><td headers="t4" class="oddRowOddCol" ><em><a href="/browse/browse?type=author&amp;value=Lian%2C+Zan">Lian,&#x20;Zan</a></em></td><td headers="t5" class="oddRowEvenCol" ><em>LAMMPS; 29&#x20;Sep&#x20;2021&#x20;-&#x20;Update&#x20;3</em></td><td headers="t6" class="oddRowOddCol" ><em>Molecular&#x20;Dynamics</em></td><td headers="t7" class="oddRowEvenCol" >-</td><td headers="t8" class="oddRowOddCol" >-</td><td headers="t9" class="oddRowEvenCol" >-</td><td headers="t10" class="oddRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t11" class="oddRowEvenCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t12" class="oddRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td></tr>
+<tr><td headers="t1" class="evenRowEvenCol" ><a href="/browse/retrieve/3424018/thumbnail.jpeg" class="highslide" onmouseover="return this.onclick()" onclick="return hs.expand(this)"  style="margin: 0 0 0 0"><img src="/browse/retrieve/3424018/thumbnail.jpeg" alt="thumbnail.jpeg" width="80.0" height="80.0" border="0"/></a></td><td headers="t2" class="evenRowOddCol" nowrap="nowrap" align="right">10-Nov-2023</td><td headers="t3" class="evenRowEvenCol" ><strong><a href="/browse/handle/100/313977">&#x2F;NNP_application&#x2F;annealing_convergence_test&#x2F;annealing_rate&#x2F;08&#x20;16ns</a></strong></td><td headers="t4" class="evenRowOddCol" ><em><a href="/browse/browse?type=author&amp;value=Lian%2C+Zan">Lian,&#x20;Zan</a></em></td><td headers="t5" class="evenRowEvenCol" ><em>LAMMPS; 29&#x20;Sep&#x20;2021&#x20;-&#x20;Update&#x20;3</em></td><td headers="t6" class="evenRowOddCol" ><em>Molecular&#x20;Dynamics</em></td><td headers="t7" class="evenRowEvenCol" >-</td><td headers="t8" class="evenRowOddCol" >-</td><td headers="t9" class="evenRowEvenCol" >-</td><td headers="t10" class="evenRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t11" class="evenRowEvenCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t12" class="evenRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td></tr>
+<tr><td headers="t1" class="oddRowEvenCol" ><a href="/browse/retrieve/3424006/thumbnail.jpeg" class="highslide" onmouseover="return this.onclick()" onclick="return hs.expand(this)"  style="margin: 0 0 0 0"><img src="/browse/retrieve/3424006/thumbnail.jpeg" alt="thumbnail.jpeg" width="80.0" height="80.0" border="0"/></a></td><td headers="t2" class="oddRowOddCol" nowrap="nowrap" align="right">10-Nov-2023</td><td headers="t3" class="oddRowEvenCol" ><strong><a href="/browse/handle/100/313976">&#x2F;NNP_application&#x2F;annealing_convergence_test&#x2F;annealing_rate&#x2F;08&#x20;20ns</a></strong></td><td headers="t4" class="oddRowOddCol" ><em><a href="/browse/browse?type=author&amp;value=Lian%2C+Zan">Lian,&#x20;Zan</a></em></td><td headers="t5" class="oddRowEvenCol" ><em>LAMMPS; 29&#x20;Sep&#x20;2021&#x20;-&#x20;Update&#x20;3</em></td><td headers="t6" class="oddRowOddCol" ><em>Molecular&#x20;Dynamics</em></td><td headers="t7" class="oddRowEvenCol" >-</td><td headers="t8" class="oddRowOddCol" >-</td><td headers="t9" class="oddRowEvenCol" >-</td><td headers="t10" class="oddRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t11" class="oddRowEvenCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t12" class="oddRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td></tr>
+<tr><td headers="t1" class="evenRowEvenCol" ><a href="/browse/retrieve/3422797/thumbnail.jpeg" class="highslide" onmouseover="return this.onclick()" onclick="return hs.expand(this)"  style="margin: 0 0 0 0"><img src="/browse/retrieve/3422797/thumbnail.jpeg" alt="thumbnail.jpeg" width="80.0" height="80.0" border="0"/></a></td><td headers="t2" class="evenRowOddCol" nowrap="nowrap" align="right">8-Nov-2023</td><td headers="t3" class="evenRowEvenCol" ><strong><a href="/browse/handle/100/313841">&#x2F;NNP_application&#x2F;Odiffusion&#x2F;Cu2O&#x2F;NEB&#x2F;exchange1&#x20;combine</a></strong></td><td headers="t4" class="evenRowOddCol" ><em><a href="/browse/browse?type=author&amp;value=Lian%2C+Zan">Lian,&#x20;Zan</a></em></td><td headers="t5" class="evenRowEvenCol" ><em>LAMMPS; 29&#x20;Sep&#x20;2021</em></td><td headers="t6" class="evenRowOddCol" ><em>Molecular&#x20;Dynamics</em></td><td headers="t7" class="evenRowEvenCol" >-</td><td headers="t8" class="evenRowOddCol" >-</td><td headers="t9" class="evenRowEvenCol" >-</td><td headers="t10" class="evenRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t11" class="evenRowEvenCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t12" class="evenRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td></tr>
+<tr><td headers="t1" class="oddRowEvenCol" ><a href="/browse/retrieve/3422784/thumbnail.jpeg" class="highslide" onmouseover="return this.onclick()" onclick="return hs.expand(this)"  style="margin: 0 0 0 0"><img src="/browse/retrieve/3422784/thumbnail.jpeg" alt="thumbnail.jpeg" width="80.0" height="80.0" border="0"/></a></td><td headers="t2" class="oddRowOddCol" nowrap="nowrap" align="right">8-Nov-2023</td><td headers="t3" class="oddRowEvenCol" ><strong><a href="/browse/handle/100/313840">&#x2F;NNP_application&#x2F;Odiffusion&#x2F;Cu2O&#x2F;NEB&#x2F;exchange1&#x20;step1</a></strong></td><td headers="t4" class="oddRowOddCol" ><em><a href="/browse/browse?type=author&amp;value=Lian%2C+Zan">Lian,&#x20;Zan</a></em></td><td headers="t5" class="oddRowEvenCol" ><em>LAMMPS; 29&#x20;Sep&#x20;2021</em></td><td headers="t6" class="oddRowOddCol" ><em>Molecular&#x20;Dynamics</em></td><td headers="t7" class="oddRowEvenCol" >-</td><td headers="t8" class="oddRowOddCol" >-</td><td headers="t9" class="oddRowEvenCol" >-</td><td headers="t10" class="oddRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t11" class="oddRowEvenCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t12" class="oddRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td></tr>
+<tr><td headers="t1" class="evenRowEvenCol" ><a href="/browse/retrieve/3422771/thumbnail.jpeg" class="highslide" onmouseover="return this.onclick()" onclick="return hs.expand(this)"  style="margin: 0 0 0 0"><img src="/browse/retrieve/3422771/thumbnail.jpeg" alt="thumbnail.jpeg" width="80.0" height="80.0" border="0"/></a></td><td headers="t2" class="evenRowOddCol" nowrap="nowrap" align="right">8-Nov-2023</td><td headers="t3" class="evenRowEvenCol" ><strong><a href="/browse/handle/100/313839">&#x2F;NNP_application&#x2F;Odiffusion&#x2F;Cu2O&#x2F;NEB&#x2F;exchange1&#x20;step2</a></strong></td><td headers="t4" class="evenRowOddCol" ><em><a href="/browse/browse?type=author&amp;value=Lian%2C+Zan">Lian,&#x20;Zan</a></em></td><td headers="t5" class="evenRowEvenCol" ><em>LAMMPS; 29&#x20;Sep&#x20;2021</em></td><td headers="t6" class="evenRowOddCol" ><em>Molecular&#x20;Dynamics</em></td><td headers="t7" class="evenRowEvenCol" >-</td><td headers="t8" class="evenRowOddCol" >-</td><td headers="t9" class="evenRowEvenCol" >-</td><td headers="t10" class="evenRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t11" class="evenRowEvenCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t12" class="evenRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td></tr>
+<tr><td headers="t1" class="oddRowEvenCol" ><a href="/browse/retrieve/3422758/thumbnail.jpeg" class="highslide" onmouseover="return this.onclick()" onclick="return hs.expand(this)"  style="margin: 0 0 0 0"><img src="/browse/retrieve/3422758/thumbnail.jpeg" alt="thumbnail.jpeg" width="80.0" height="80.0" border="0"/></a></td><td headers="t2" class="oddRowOddCol" nowrap="nowrap" align="right">8-Nov-2023</td><td headers="t3" class="oddRowEvenCol" ><strong><a href="/browse/handle/100/313838">&#x2F;NNP_application&#x2F;Odiffusion&#x2F;Cu2O&#x2F;NEB&#x2F;exchange1&#x20;step3</a></strong></td><td headers="t4" class="oddRowOddCol" ><em><a href="/browse/browse?type=author&amp;value=Lian%2C+Zan">Lian,&#x20;Zan</a></em></td><td headers="t5" class="oddRowEvenCol" ><em>LAMMPS; 29&#x20;Sep&#x20;2021</em></td><td headers="t6" class="oddRowOddCol" ><em>Molecular&#x20;Dynamics</em></td><td headers="t7" class="oddRowEvenCol" >-</td><td headers="t8" class="oddRowOddCol" >-</td><td headers="t9" class="oddRowEvenCol" >-</td><td headers="t10" class="oddRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t11" class="oddRowEvenCol" ><span class="glyphicon glyphicon-remove"></span></td><td headers="t12" class="oddRowOddCol" ><span class="glyphicon glyphicon-remove"></span></td></tr>
+</table>
+<script type="text/javascript">
+          jQuery(window).resize(function () {
+             if(jQuery( document ).width() <=  480 ){
+               if(jQuery('#browsetable').bootstrapTable('getOptions').cardView == false)
+                    jQuery('#browsetable').bootstrapTable('toggleView');
+             }
+             if(jQuery( document ).width() >  480 ){
+               if(jQuery('#browsetable').bootstrapTable('getOptions').cardView == true)
+                    jQuery('#browsetable').bootstrapTable('toggleView');
+             }
+                
+          });            
+
+ jQuery(function() { jQuery('#browsetable').bootstrapTable('hideColumn', 'Basis Set'); });
+ jQuery(function() { jQuery('#browsetable').bootstrapTable('hideColumn', 'Energy'); });
+ jQuery(function() { jQuery("div.search > input[type=text]").attr("aria-label","Search"); });
+ jQuery(function() { jQuery("div[title='Columns'] > button.dropdown-toggle").attr("aria-label","Columns"); });
+ jQuery(function() { jQuery("div[title='Columns'] > ul > li").attr("role","menuitem") });
+</script>
+
+
+
+
+    
+    <div class="browse_range">
+        Collection&#39;s Items (Sorted by Submit Date in Descending order): 1 to 20 of 6322
+    </div>
+
+    
+    <div class="prev-next-links">
+
+      &nbsp;<a href="/browse/handle/100/281008?offset=20">next&nbsp;&gt;</a>
+
+    </div>
+
+
+
+
+<div class="row">
+	<div class="col-md-3 col-sm-12">
+
+
+ 	</div>
+ 	<div class="col-md-9 col-sm-12 text-right" style="margin-top:8px">
+
+
+  		<div>
+			<a alt="Share link" href="https://www.addtoany.com/share#url=https%3A%2F%2Fiochem-bd.bsc.es%2Fbrowse%2Fcollection-home.jsp&amp;title=" target="_blank"><img src="https://static.addtoany.com/buttons/a2a.svg" width="32" height="32" style="background-color:royalblue" alt="Share"></a>
+			<a alt="Share on Facebook" href="https://www.addtoany.com/add_to/facebook?linkurl=https%3A%2F%2Fiochem-bd.bsc.es%2Fbrowse%2Fcollection-home.jsp&amp;linkname=" target="_blank"><img src="https://static.addtoany.com/buttons/facebook.svg" width="32" height="32" style="background-color:royalblue"  alt="Facebook"></a>
+			<a alt="Share on Twitter" href="https://www.addtoany.com/add_to/twitter?linkurl=https%3A%2F%2Fiochem-bd.bsc.es%2Fbrowse%2Fcollection-home.jsp&amp;linkname=" target="_blank"><img src="https://static.addtoany.com/buttons/twitter.svg" width="32" height="32" style="background-color:royalblue" alt="Twitter"></a>
+			<a alt="Share via email" href="https://www.addtoany.com/add_to/email?linkurl=https%3A%2F%2Fiochem-bd.bsc.es%2Fbrowse%2Fcollection-home.jsp&amp;linkname=" target="_blank"><img src="https://static.addtoany.com/buttons/email.svg" width="32" height="32" style="background-color:royalblue" alt="Email"></a>
+		</div>
+
+    <span><a href="/browse/feed/rss_1.0/100/281008"><img src="/browse/image/rss1.png" alt="RSS Feed" width="43" height="32" style="margin: -20px 0 3px" /></a></span>
+
+    <span><a href="/browse/feed/rss_2.0/100/281008"><img src="/browse/image/rss2.png" alt="RSS Feed" width="43" height="32" style="margin: -20px 0 3px" /></a></span>
+
+    <span><a href="/browse/feed/atom_1.0/100/281008"><img src="/browse/image/rss.gif" alt="RSS Feed" width="36" height="32" style="margin: -20px 0 3px" /></a></span>
+		
+	</div>      
+</div>    
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+
+	</div>
+	<div class="col-md-3">
+                    
+
+
+ 
+
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="col-md-12">
+<h3 class="facets">Discover</h3>
+<div id="facets" class="facetsBox row panel">
+<div id="facet_author" class="facet col-md-12">
+	    <span class="facetName">Author</span>
+	    <ul class="list-group"><li class="list-group-item"><span class="badge">6322</span> <a href="/browse/handle/100/281008/simple-search?filterquery=Lian%2C+Zan&amp;filtername=author&amp;filtertype=equals"
+	                title="Filter by Lian, Zan">
+	                Lian, Zan</a></li></ul></div><div id="facet_programName" class="facet col-md-12">
+	    <span class="facetName">Program name</span>
+	    <ul class="list-group"><li class="list-group-item"><span class="badge">5444</span> <a href="/browse/handle/100/281008/simple-search?filterquery=LAMMPS&amp;filtername=programName&amp;filtertype=equals"
+	                title="Filter by LAMMPS">
+	                LAMMPS</a></li><li class="list-group-item"><span class="badge">878</span> <a href="/browse/handle/100/281008/simple-search?filterquery=vasp&amp;filtername=programName&amp;filtertype=equals"
+	                title="Filter by vasp">
+	                vasp</a></li></ul></div><div id="facet_calculationType" class="facet col-md-12">
+	    <span class="facetName">Calculation type</span>
+	    <ul class="list-group"><li class="list-group-item"><span class="badge">5444</span> <a href="/browse/handle/100/281008/simple-search?filterquery=Molecular+Dynamics&amp;filtername=calculationType&amp;filtertype=equals"
+	                title="Filter by Molecular Dynamics">
+	                Molecular Dynamics</a></li><li class="list-group-item"><span class="badge">805</span> <a href="/browse/handle/100/281008/simple-search?filterquery=Geometry+optimization&amp;filtername=calculationType&amp;filtertype=equals"
+	                title="Filter by Geometry optimization">
+	                Geometry optimization</a></li><li class="list-group-item"><span class="badge">73</span> <a href="/browse/handle/100/281008/simple-search?filterquery=Ab-Initio+Molecular+Dynamics&amp;filtername=calculationType&amp;filtertype=equals"
+	                title="Filter by Ab-Initio Molecular Dynamics">
+	                Ab-Initio Molecular Dynamics</a></li></ul></div><div id="facet_method" class="facet col-md-12">
+	    <span class="facetName">Method</span>
+	    <ul class="list-group"><li class="list-group-item"><span class="badge">878</span> <a href="/browse/handle/100/281008/simple-search?filterquery=DFT&amp;filtername=method&amp;filtertype=equals"
+	                title="Filter by DFT">
+	                DFT</a></li></ul></div></div></div>
+	
+		
+		<div class="panel">
+			<div class="panel-body">              
+		    	<form method="post" action="/browse/metadataexport">
+		        	<input type="hidden" name="handle" value="100/281008" />
+		            <input class="btn btn-primary col-md-12" type="submit" value="Export .csv" />
+		       	</form>
+			</div>
+		</div>
+	
+  
+    </div>
+    </div>       
+
+</div>
+</main>
+
+	</body>
+</html>
+

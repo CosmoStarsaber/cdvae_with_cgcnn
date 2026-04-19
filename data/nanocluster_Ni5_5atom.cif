@@ -1,0 +1,30 @@
+data_image0
+_chemical_formula_structural       Ni5
+_chemical_formula_sum              "Ni5"
+_cell_length_a       15.000000000369779
+_cell_length_b       15.000000000369779
+_cell_length_c       15.000000000369779
+_cell_angle_alpha    90.0
+_cell_angle_beta     90.0
+_cell_angle_gamma    90.0
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ni  Ni1       1.0  0.4999999999988208  0.5000000000118536  0.5000000000001008  1.0000
+  Ni  Ni2       1.0  0.5000000000092273  0.5000000000015782  0.4999999999960843  1.0000
+  Ni  Ni3       1.0  0.49999999999678635  0.5000000000034892  0.499999999987674  1.0000
+  Ni  Ni4       1.0  0.4999999999957544  0.49999999999692246  0.5000000000017768  1.0000
+  Ni  Ni5       1.0  0.4999999999907727  0.4999999999881463  0.5000000000123259  1.0000

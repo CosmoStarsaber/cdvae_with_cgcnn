@@ -1,0 +1,32 @@
+data_image0
+_chemical_formula_structural       Ti7
+_chemical_formula_sum              "Ti7"
+_cell_length_a       15.000000000396643
+_cell_length_b       15.000000000396643
+_cell_length_c       15.000000000396643
+_cell_angle_alpha    90.0
+_cell_angle_beta     90.0
+_cell_angle_gamma    90.0
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ti  Ti1       1.0  0.5000000000053423  0.4999999999915973  0.49999999999401246  1.0000
+  Ti  Ti2       1.0  0.500000000009046  0.4999999999867786  0.5000000000070217  1.0000
+  Ti  Ti3       1.0  0.5000000000013313  0.5000000000056704  0.49999999999274897  1.0000
+  Ti  Ti4       1.0  0.4999999999973553  0.4999999999978189  0.5000000000072511  1.0000
+  Ti  Ti5       1.0  0.5000000000120852  0.5000000000021507  0.500000000004259  1.0000
+  Ti  Ti6       1.0  0.5000000000006132  0.5000000000132214  0.500000000006396  1.0000
+  Ti  Ti7       1.0  0.49999999998791483  0.5000000000080167  0.49999999999934325  1.0000

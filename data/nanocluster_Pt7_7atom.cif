@@ -1,0 +1,32 @@
+data_image0
+_chemical_formula_structural       Pt7
+_chemical_formula_sum              "Pt7"
+_cell_length_a       15.000000000523475
+_cell_length_b       15.000000000523475
+_cell_length_c       15.000000000523475
+_cell_angle_alpha    90.0
+_cell_angle_beta     90.0
+_cell_angle_gamma    90.0
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Pt  Pt1       1.0  0.4999999999832486  0.4999999999990802  0.5000000000126162  1.0000
+  Pt  Pt2       1.0  0.5000000000099387  0.49999999999560507  0.4999999999948104  1.0000
+  Pt  Pt3       1.0  0.49999999999566147  0.5000000000013568  0.500000000002428  1.0000
+  Pt  Pt4       1.0  0.49999999998255085  0.49999999998995703  0.4999999999988358  1.0000
+  Pt  Pt5       1.0  0.5000000000174492  0.5000000000100429  0.4999999999909818  1.0000
+  Pt  Pt6       1.0  0.4999999999945011  0.49999999999167666  0.49999999998738376  1.0000
+  Pt  Pt7       1.0  0.5000000000011979  0.5000000000079551  0.49999999998755734  1.0000

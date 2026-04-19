@@ -1,0 +1,1032 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>ioChem-BD Browse - Barcelona Supercomputing Center: Cu-cluster</title>
+        <meta charset="utf-8">
+        <meta name="Generator" content="DSpace none" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <rdf:RDF xmlns="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+            <Work xmlns:dc="http://purl.org/dc/elements/1.1/" rdf:about="">
+                <license rdf:resource="http://creativecommons.org/licenses/by/4.0/"/>
+            </Work>
+            <License rdf:about="http://creativecommons.org/licenses/by/4.0/">
+                <permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+                <permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+                <permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+                <requires rdf:resource="http://creativecommons.org/ns#Attribution"/>
+                <requires rdf:resource="http://creativecommons.org/ns#Notice"/>
+  
+            </License>
+        </rdf:RDF>
+        <link rel="shortcut icon" href="/browse/favicon.ico" type="image/x-icon"/>
+   	    <link rel="stylesheet" href="/browse/static/css/bootstrap/bootstrap-theme.css" type="text/css" />   	    
+   	    <link rel="stylesheet" href="/browse/static/css/bootstrap/bootstrap.css" type="text/css" />
+   	    <link rel="stylesheet" href="/browse/static/css/jquery-ui-1.10.3.custom/redmond/jquery-ui-1.10.3.custom.min.css" />
+   	    <link rel="stylesheet" href="/browse/static/css/iochem-bd-theme.css" />
+
+        <link rel="alternate" type="application/rdf+xml" title="Items in Collection" href="/browse/feed/rss_1.0/100/338270"/>
+
+        <link rel="alternate" type="application/rss+xml" title="Items in Collection" href="/browse/feed/rss_2.0/100/338270"/>
+
+        <link rel="alternate" type="application/rss+xml" title="Items in Collection" href="/browse/feed/atom_1.0/100/338270"/>
+
+        <link rel="search" type="application/opensearchdescription+xml" href="/browse/open-search/description.xml" title="DSpace"/>
+    
+	<script type='text/javascript' src="/browse/static/js/jquery/jquery-1.10.2.min.js"></script>
+	<script type='text/javascript' src='/browse/static/js/jquery/jquery-ui-1.10.3.custom.min.js'></script>
+	<script type='text/javascript' src='/browse/static/js/bootstrap/bootstrap.min.js'></script>
+	<script type='text/javascript' src='/browse/static/js/holder.js'></script>
+	<script type="text/javascript" src="/browse/utils.js"></script>
+    <script type="text/javascript" src="/browse/static/js/choice-support.js"> </script>
+
+    
+    
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.9.1/dist/cookieconsent.css" media="print" onload="this.media='all'">
+    <!-- Google tag (gtag.js) -->
+    <script type="text/plain" data-cookiecategory="analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-PXNS3K4MT0"></script>
+    <script type="text/plain" data-cookiecategory="analytics">
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-PXNS3K4MT0');
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.9.1/dist/cookieconsent.js"></script>
+
+    <script>
+        window.addEventListener('load', function () {
+            // obtain cookieconsent plugin
+            var cookieconsent = initCookieConsent();    
+            // run plugin with config object
+            cookieconsent.run({
+                autorun: true,
+                current_lang: 'en',
+                autoclear_cookies: true,
+                page_scripts: true,
+    
+                onFirstAction: function(user_preferences, cookie){},    
+                onAccept: function (cookie) {},    
+                onChange: function (cookie, changed_preferences) {},
+    
+                languages: {
+                    en: {
+                        consent_modal: {
+                            title: 'I use cookies',
+                            description: 'Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only upon approval.',
+                            primary_btn: {
+                                text: 'Accept',
+                                role: 'accept_all'              // 'accept_selected' or 'accept_all'
+                            },
+                            secondary_btn: {
+                                text: 'Settings',
+                                role: 'settings'                // 'settings' or 'accept_necessary'
+                            }
+                        },
+                        settings_modal: {
+                            title: 'Cookie preferences',
+                            save_settings_btn: 'Save settings',
+                            accept_all_btn: 'Accept all',
+                            reject_all_btn: 'Reject all',      
+                            cookie_table_headers: [
+                                {col1: 'Name'},
+                                {col2: 'Domain'},
+                                {col3: 'Expiration'},
+                                {col4: 'Description'},
+                                {col5: 'Type'}
+                            ],
+                            blocks: [
+                                {
+                                    title: 'Cookie usage',
+                                    description: 'I use cookies to ensure the basic functionalities of the website and to enhance your online experience. You can choose for each category to opt-in/out whenever you want.'
+                                }, {
+                                    title: 'Strictly necessary cookies',
+                                    description: 'These cookies are essential for the proper functioning of my website. Without these cookies, the website would not work properly.',
+                                    toggle: {
+                                        value: 'necessary',
+                                        enabled: true,
+                                        readonly: true
+                                    }
+                                }, {
+                                    title: 'Analytics cookies',
+                                    description: 'These cookies collect information about how you use the website, which pages you visited and which links you clicked on. All of the data is anonymized and cannot be used to identify you.',
+                                    toggle: {
+                                        value: 'analytics',
+                                        enabled: true,
+                                        readonly: false
+                                    },
+                                    cookie_table: [
+                                        {
+                                            col1: '^_ga',
+                                            col2: 'google.com',
+                                            col3: '2 years',
+                                            col4: 'description ...',
+                                            col5: 'Permanent cookie',
+                                            is_regex: true
+                                        },
+                                        {
+                                            col1: '_gid',
+                                            col2: 'google.com',
+                                            col3: '1 day',
+                                            col4: 'description ...',
+                                            col5: 'Permanent cookie'
+                                        }
+                                    ]
+                                }, {
+                                    title: 'More information',
+                                    description: 'For any queries in relation to our policy on cookies and your choices, please contact with platform administrators.',
+                                }
+                            ]
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+    
+	 <script type="text/javascript" src="/browse/static/js/highslide/highslide-full.js"></script>
+	 <link rel="stylesheet" type="text/css" href="/browse/static/css/highslide/highslide.css" />
+	 <!--[if lt IE 7]>
+	 <link rel="stylesheet" type="text/css" href="/browse/static/css/highslide/highslide-ie6.css" />
+	 <![endif]-->
+	  <script type="text/javascript">
+	         hs.graphicsDir = '/browse/image/highslide/graphics/';
+	         hs.showCredits = false;
+	         hs.dynamicallyUpdateAnchors = true;
+	 </script>
+	 <script type="text/javascript">
+	         hs.Expander.prototype.onMouseOut = function (sender) {  sender.close();};
+	         hs.Expander.prototype.onAfterExpand = function (sender) {  if (!sender.mouseIsOver) sender.close();}
+	 </script>
+	 <script>
+	  		window.onload = function() {
+	  			var table = document.querySelector('div.highslide-container > table');
+	  			if (table) {
+	  			  table.setAttribute('role', 'presentation');
+	  			}		 
+	  		}
+	 </script>
+
+	<script type="text/javascript" src="/browse/static/js/jquery-datatables/datatables.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/browse/static/css/jquery-datatables/dataTables.bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="/browse/static/css/jquery-datatables/datatables.min.css" />
+	
+	<link rel="stylesheet" type="text/css" href="/browse/xslt/css/font-awesome.min.css" />
+
+    
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="/browse/static/js/html5shiv.js"></script>
+  <script src="/browse/static/js/respond.min.js"></script>
+<![endif]-->
+    </head>
+
+    
+    
+    <body class="undernavigation">
+<a class="sr-only" href="#content">Skip navigation</a>
+<header class="navbar navbar-fixed-top navbar-custom">    
+    
+            <div class="container">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+       <div class="navbar-header">
+         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-label="Toggle navigation">
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </button>
+         <a class="navbar-brand" href="/browse"><img src="/browse/image/logo-iochembd-browse-white.png" class="img-responsive" alt="ioChem-BD Browse logo" /> <span class="sr-only">ioChem-BD Browse</span></a>
+       </div>
+
+       <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">         
+       <div class="nav navbar-nav navbar-right">
+		
+		
+
+     
+		<ul class="nav navbar-nav navbar-right">
+		 
+		
+		  <li class="dropdown">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse <b class="caret"></b></a>
+             <ul class="dropdown-menu">
+               <li><a href="/browse/community-list">Communities<br/>&amp;&nbsp;Collections</a></li>
+				<li class="divider"></li>
+        <li class="dropdown-header">Browse Items by:</li>
+				
+				
+				
+				      			<li><a href="/browse/browse?type=dateissued">Issue Date</a></li>
+					
+				      			<li><a href="/browse/browse?type=author">Author</a></li>
+					
+				      			<li><a href="/browse/browse?type=title">Title</a></li>
+					
+				      			<li><a href="/browse/browse?type=subject">Subject</a></li>
+					
+				    
+				
+            </ul>
+          </li>
+		
+		
+		
+		
+		
+		
+         <li class="dropdown">
+         
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Sign on to: <b class="caret"></b></a>
+	             
+             <ul class="dropdown-menu">
+             
+               <li><a href="/browse/mydspace?action=redirectToCreate">Create module </a></li>
+               <li><a href="/browse/mydspace">Browse module</a></li>
+               <li><a href="/browse/subscribe">Receive email<br/>updates</a></li>
+               <li><a href="/browse/profile">Edit Profile</a></li>
+			
+		
+             </ul>
+           </li>          
+       
+          </ul>
+          
+	
+	<form method="get" action="/browse/simple-search" class="navbar-form navbar-right">
+	    <div class="input-group">
+	      <label for="tequery" class="sr-only" style="background-color:white">Search on Browse module</label>
+	      <input type="text" class="form-control" placeholder="Search&nbsp;Browse" name="query" id="tequery" size="20" />
+          <span class="input-group-btn">
+       	  	<button type="submit" class="btn btn-secondary" ><span class="glyphicon glyphicon-search"></span><span class="sr-only">Search</span></button>	  
+          </span>
+       </div>        
+	</form></div>
+    </nav>
+
+            </div>
+
+</header>
+
+<main id="content" role="main" style="padding-top:65px">
+
+<div class="container">
+                
+
+
+
+  
+
+<ol class="breadcrumb btn-success">
+
+  <li><a href="/browse/">Barcelona Supercomputing Center</a></li>
+
+  <li><a href="/browse/handle/100/1">BSC host</a></li>
+
+</ol>
+
+</div>                
+
+        
+<div class="container">
+
+	<div class="row">
+		<div class="col-md-9">
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="/browse/static/js/treelist.js?v=1"></script>
+<script type="text/javascript" src="/browse/static/js/jquery/jquery.sticky.js"></script>
+
+<link rel="stylesheet" href="/browse/static/css/iochem-bd-treelist.css?v=1" type="text/css" />
+
+
+	<h1 class="sr-only">ioChem-BD Browse module - collection page</h1>
+    <div class="well">
+    <div class="row">
+    	<div class="col-md-8">
+    		<h2>Cu-cluster
+
+		<small style="color:#525252">Collection home page</small>
+		
+      
+      		</h2>      		
+         </div>
+
+	</div>
+
+
+	  <p class="copyrightText" >Share - copy and redistribute the material in any medium or format. Adapt -  remix, transform, and build upon the material for any purpose, even commercially. The licensor cannot revoke these freedoms as long as you follow the license terms.</p>
+  </div>
+  
+
+<div class="well">
+
+			Please use this identifier to cite or link to this collection:
+			<span>DOI: <a href="https://doi.org/10.19061/iochem-bd-6-444" target="_blank">10.19061/iochem-bd-6-444</a></span>			
+			
+  			<p class="collectionJournalDescription">This dataset derived results are published in:</p>
+					<p class="collectionJournalLine"><span style='font-style:oblique'>Manuscript title</span>: Revisits the Selectivity toward C2+ Products for CO2 Electroreduction over Subnano-Copper Clusters Based on Structural Descriptors</p>
+					<p class="collectionJournalLine"><span style='font-style:oblique'>Journal</span>: ACS Catal.</p>										
+						  						  	
+					<p class="collectionJournalLine"><span style='font-style:oblique'>DOI</span>: <a href="https://doi.org/10.1021/acscatal.4c07759" target="_blank">10.1021/acscatal.4c07759</a></p>
+					  	
+
+</div>
+
+
+
+
+
+
+    
+<div class="row">
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+	<div id='mainDiv' class='row mainDiv'>
+		<div id='viewModeSelectorDiv' class='viewModeSelector clearfix' style='margin-bottom: 10px;'>
+			<div id='treeModeSelectorDiv' class='btn-group pull-right' role='group' aria-label='View mode selector'>
+				<span class='control-label' style='margin-right: 10px; line-height: 34px;'>View as:</span>
+				<label class='btn btn-default' for='viewMode1'>
+					<input type='radio' name='viewModeOptions' id='viewMode1' value='tree' onclick="resetTreeLazy('calculationTree', 'detailTable', 541)" autocomplete='off'> Tree
+				</label>
+				<label class='btn btn-default' for='viewMode2'>
+					<input type='radio' name='viewModeOptions' id='viewMode2' value='list' onclick="changeDisplayLazy('calculationTree', 'detailTable', 'full')" autocomplete='off'> List
+				</label>
+			</div>
+		</div>
+        <div id='masterDiv' class='col-md-3'>
+            <div id='calculationTree' class='tree'>
+				<ul id='rootNode'>
+   				<li class='node' index='0' data-path='' data-search-prefix='' data-count='0'><span class='nodeText'>ROOT</span>
+<ul>
+   <li class='node' index='1' data-path='/C-O-H-Cu-cluster' data-search-prefix='' data-count='0'><span class='nodeText'>C-O-H-Cu-cluster</span>
+<ul>
+   <li class='node' index='2' data-path='/C-O-H-Cu-cluster/140-Wullf' data-search-prefix='' data-count='0'><span class='nodeText'>140-Wullf</span>
+<ul>
+   <li class='node' index='3' data-path='/C-O-H-Cu-cluster/140-Wullf/CHOCHO' data-search-prefix='/C-O-H-Cu-cluster/140-Wullf/CHOCHO ' data-count='10'><span class='nodeText'>CHOCHO</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='4' data-path='/C-O-H-Cu-cluster/140-Wullf/COCHO' data-search-prefix='/C-O-H-Cu-cluster/140-Wullf/COCHO ' data-count='10'><span class='nodeText'>COCHO</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='5' data-path='/C-O-H-Cu-cluster/140-Wullf/COCO' data-search-prefix='/C-O-H-Cu-cluster/140-Wullf/COCO ' data-count='8'><span class='nodeText'>COCO</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='6' data-path='/C-O-H-Cu-cluster/140-Wullf/corner' data-search-prefix='/C-O-H-Cu-cluster/140-Wullf/corner ' data-count='4'><span class='nodeText'>corner</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='7' data-path='/C-O-H-Cu-cluster/140-Wullf/edge' data-search-prefix='/C-O-H-Cu-cluster/140-Wullf/edge ' data-count='4'><span class='nodeText'>edge</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='8' data-path='/C-O-H-Cu-cluster/140-Wullf/facet1' data-search-prefix='/C-O-H-Cu-cluster/140-Wullf/facet1 ' data-count='3'><span class='nodeText'>facet1</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='9' data-path='/C-O-H-Cu-cluster/140-Wullf/facet2' data-search-prefix='/C-O-H-Cu-cluster/140-Wullf/facet2 ' data-count='4'><span class='nodeText'>facet2</span>
+   </li>
+</ul>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='10' data-path='/C-O-H-Cu-cluster/147-D5h' data-search-prefix='' data-count='0'><span class='nodeText'>147-D5h</span>
+<ul>
+   <li class='node' index='11' data-path='/C-O-H-Cu-cluster/147-D5h/corner1' data-search-prefix='/C-O-H-Cu-cluster/147-D5h/corner1 ' data-count='2'><span class='nodeText'>corner1</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='12' data-path='/C-O-H-Cu-cluster/147-D5h/corner2' data-search-prefix='/C-O-H-Cu-cluster/147-D5h/corner2 ' data-count='2'><span class='nodeText'>corner2</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='13' data-path='/C-O-H-Cu-cluster/147-D5h/edge1' data-search-prefix='/C-O-H-Cu-cluster/147-D5h/edge1 ' data-count='2'><span class='nodeText'>edge1</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='14' data-path='/C-O-H-Cu-cluster/147-D5h/edge2' data-search-prefix='/C-O-H-Cu-cluster/147-D5h/edge2 ' data-count='2'><span class='nodeText'>edge2</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='15' data-path='/C-O-H-Cu-cluster/147-D5h/edge3' data-search-prefix='/C-O-H-Cu-cluster/147-D5h/edge3 ' data-count='2'><span class='nodeText'>edge3</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='16' data-path='/C-O-H-Cu-cluster/147-D5h/edge4' data-search-prefix='/C-O-H-Cu-cluster/147-D5h/edge4 ' data-count='2'><span class='nodeText'>edge4</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='17' data-path='/C-O-H-Cu-cluster/147-D5h/facet1' data-search-prefix='/C-O-H-Cu-cluster/147-D5h/facet1 ' data-count='2'><span class='nodeText'>facet1</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='18' data-path='/C-O-H-Cu-cluster/147-D5h/facet2' data-search-prefix='/C-O-H-Cu-cluster/147-D5h/facet2 ' data-count='2'><span class='nodeText'>facet2</span>
+   </li>
+</ul>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='19' data-path='/C-O-H-Cu-cluster/147-Ih' data-search-prefix='' data-count='0'><span class='nodeText'>147-Ih</span>
+<ul>
+   <li class='node' index='20' data-path='/C-O-H-Cu-cluster/147-Ih/CHOCHO' data-search-prefix='/C-O-H-Cu-cluster/147-Ih/CHOCHO ' data-count='8'><span class='nodeText'>CHOCHO</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='21' data-path='/C-O-H-Cu-cluster/147-Ih/COCHO' data-search-prefix='/C-O-H-Cu-cluster/147-Ih/COCHO ' data-count='8'><span class='nodeText'>COCHO</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='22' data-path='/C-O-H-Cu-cluster/147-Ih/COCO' data-search-prefix='/C-O-H-Cu-cluster/147-Ih/COCO ' data-count='6'><span class='nodeText'>COCO</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='23' data-path='/C-O-H-Cu-cluster/147-Ih/corner' data-search-prefix='/C-O-H-Cu-cluster/147-Ih/corner ' data-count='4'><span class='nodeText'>corner</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='24' data-path='/C-O-H-Cu-cluster/147-Ih/edge' data-search-prefix='/C-O-H-Cu-cluster/147-Ih/edge ' data-count='4'><span class='nodeText'>edge</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='25' data-path='/C-O-H-Cu-cluster/147-Ih/facet' data-search-prefix='/C-O-H-Cu-cluster/147-Ih/facet ' data-count='4'><span class='nodeText'>facet</span>
+   </li>
+</ul>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='26' data-path='/C-O-H-Cu-cluster/147-Oh' data-search-prefix='' data-count='0'><span class='nodeText'>147-Oh</span>
+<ul>
+   <li class='node' index='27' data-path='/C-O-H-Cu-cluster/147-Oh/corner' data-search-prefix='/C-O-H-Cu-cluster/147-Oh/corner ' data-count='3'><span class='nodeText'>corner</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='28' data-path='/C-O-H-Cu-cluster/147-Oh/edge' data-search-prefix='/C-O-H-Cu-cluster/147-Oh/edge ' data-count='3'><span class='nodeText'>edge</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='29' data-path='/C-O-H-Cu-cluster/147-Oh/facet1' data-search-prefix='/C-O-H-Cu-cluster/147-Oh/facet1 ' data-count='3'><span class='nodeText'>facet1</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='30' data-path='/C-O-H-Cu-cluster/147-Oh/facet2' data-search-prefix='/C-O-H-Cu-cluster/147-Oh/facet2 ' data-count='3'><span class='nodeText'>facet2</span>
+   </li>
+</ul>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='31' data-path='/C-O-H-Cu-cluster/165-Wullf' data-search-prefix='' data-count='0'><span class='nodeText'>165-Wullf</span>
+<ul>
+   <li class='node' index='32' data-path='/C-O-H-Cu-cluster/165-Wullf/corner' data-search-prefix='/C-O-H-Cu-cluster/165-Wullf/corner ' data-count='2'><span class='nodeText'>corner</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='33' data-path='/C-O-H-Cu-cluster/165-Wullf/edge' data-search-prefix='/C-O-H-Cu-cluster/165-Wullf/edge ' data-count='2'><span class='nodeText'>edge</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='34' data-path='/C-O-H-Cu-cluster/165-Wullf/facet1' data-search-prefix='/C-O-H-Cu-cluster/165-Wullf/facet1 ' data-count='2'><span class='nodeText'>facet1</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='35' data-path='/C-O-H-Cu-cluster/165-Wullf/facet2' data-search-prefix='/C-O-H-Cu-cluster/165-Wullf/facet2 ' data-count='2'><span class='nodeText'>facet2</span>
+   </li>
+</ul>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='36' data-path='/C-O-H-Cu-cluster/225-Wullf' data-search-prefix='' data-count='0'><span class='nodeText'>225-Wullf</span>
+<ul>
+   <li class='node' index='37' data-path='/C-O-H-Cu-cluster/225-Wullf/corner' data-search-prefix='/C-O-H-Cu-cluster/225-Wullf/corner ' data-count='2'><span class='nodeText'>corner</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='38' data-path='/C-O-H-Cu-cluster/225-Wullf/edge1' data-search-prefix='/C-O-H-Cu-cluster/225-Wullf/edge1 ' data-count='2'><span class='nodeText'>edge1</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='39' data-path='/C-O-H-Cu-cluster/225-Wullf/edge2' data-search-prefix='/C-O-H-Cu-cluster/225-Wullf/edge2 ' data-count='2'><span class='nodeText'>edge2</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='40' data-path='/C-O-H-Cu-cluster/225-Wullf/facet1' data-search-prefix='/C-O-H-Cu-cluster/225-Wullf/facet1 ' data-count='2'><span class='nodeText'>facet1</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='41' data-path='/C-O-H-Cu-cluster/225-Wullf/facet2' data-search-prefix='/C-O-H-Cu-cluster/225-Wullf/facet2 ' data-count='2'><span class='nodeText'>facet2</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='42' data-path='/C-O-H-Cu-cluster/225-Wullf/facet3' data-search-prefix='/C-O-H-Cu-cluster/225-Wullf/facet3 ' data-count='2'><span class='nodeText'>facet3</span>
+   </li>
+</ul>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='43' data-path='/C-O-H-Cu-cluster/309-D5h' data-search-prefix='' data-count='0'><span class='nodeText'>309-D5h</span>
+<ul>
+   <li class='node' index='44' data-path='/C-O-H-Cu-cluster/309-D5h/corner1' data-search-prefix='/C-O-H-Cu-cluster/309-D5h/corner1 ' data-count='2'><span class='nodeText'>corner1</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='45' data-path='/C-O-H-Cu-cluster/309-D5h/corner2' data-search-prefix='/C-O-H-Cu-cluster/309-D5h/corner2 ' data-count='2'><span class='nodeText'>corner2</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='46' data-path='/C-O-H-Cu-cluster/309-D5h/edge1' data-search-prefix='/C-O-H-Cu-cluster/309-D5h/edge1 ' data-count='2'><span class='nodeText'>edge1</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='47' data-path='/C-O-H-Cu-cluster/309-D5h/edge2' data-search-prefix='/C-O-H-Cu-cluster/309-D5h/edge2 ' data-count='2'><span class='nodeText'>edge2</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='48' data-path='/C-O-H-Cu-cluster/309-D5h/facet1' data-search-prefix='/C-O-H-Cu-cluster/309-D5h/facet1 ' data-count='2'><span class='nodeText'>facet1</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='49' data-path='/C-O-H-Cu-cluster/309-D5h/facet2' data-search-prefix='/C-O-H-Cu-cluster/309-D5h/facet2 ' data-count='2'><span class='nodeText'>facet2</span>
+   </li>
+</ul>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='50' data-path='/C-O-H-Cu-cluster/309-Ih' data-search-prefix='' data-count='0'><span class='nodeText'>309-Ih</span>
+<ul>
+   <li class='node' index='51' data-path='/C-O-H-Cu-cluster/309-Ih/corner' data-search-prefix='/C-O-H-Cu-cluster/309-Ih/corner ' data-count='2'><span class='nodeText'>corner</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='52' data-path='/C-O-H-Cu-cluster/309-Ih/edge1' data-search-prefix='/C-O-H-Cu-cluster/309-Ih/edge1 ' data-count='2'><span class='nodeText'>edge1</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='53' data-path='/C-O-H-Cu-cluster/309-Ih/edge2' data-search-prefix='/C-O-H-Cu-cluster/309-Ih/edge2 ' data-count='2'><span class='nodeText'>edge2</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='54' data-path='/C-O-H-Cu-cluster/309-Ih/facet' data-search-prefix='/C-O-H-Cu-cluster/309-Ih/facet ' data-count='2'><span class='nodeText'>facet</span>
+   </li>
+</ul>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='55' data-path='/C-O-H-Cu-cluster/309-Oh' data-search-prefix='' data-count='0'><span class='nodeText'>309-Oh</span>
+<ul>
+   <li class='node' index='56' data-path='/C-O-H-Cu-cluster/309-Oh/corner1' data-search-prefix='/C-O-H-Cu-cluster/309-Oh/corner1 ' data-count='2'><span class='nodeText'>corner1</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='57' data-path='/C-O-H-Cu-cluster/309-Oh/edge1' data-search-prefix='/C-O-H-Cu-cluster/309-Oh/edge1 ' data-count='2'><span class='nodeText'>edge1</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='58' data-path='/C-O-H-Cu-cluster/309-Oh/facet1' data-search-prefix='/C-O-H-Cu-cluster/309-Oh/facet1 ' data-count='2'><span class='nodeText'>facet1</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='59' data-path='/C-O-H-Cu-cluster/309-Oh/facet2' data-search-prefix='/C-O-H-Cu-cluster/309-Oh/facet2 ' data-count='2'><span class='nodeText'>facet2</span>
+   </li>
+</ul>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='60' data-path='/C-O-H-Cu-cluster/38-Wullf' data-search-prefix='' data-count='0'><span class='nodeText'>38-Wullf</span>
+<ul>
+   <li class='node' index='61' data-path='/C-O-H-Cu-cluster/38-Wullf/CHOCHO' data-search-prefix='/C-O-H-Cu-cluster/38-Wullf/CHOCHO ' data-count='6'><span class='nodeText'>CHOCHO</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='62' data-path='/C-O-H-Cu-cluster/38-Wullf/COCHO' data-search-prefix='/C-O-H-Cu-cluster/38-Wullf/COCHO ' data-count='6'><span class='nodeText'>COCHO</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='63' data-path='/C-O-H-Cu-cluster/38-Wullf/COCO' data-search-prefix='/C-O-H-Cu-cluster/38-Wullf/COCO ' data-count='4'><span class='nodeText'>COCO</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='64' data-path='/C-O-H-Cu-cluster/38-Wullf/corner' data-search-prefix='/C-O-H-Cu-cluster/38-Wullf/corner ' data-count='4'><span class='nodeText'>corner</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='65' data-path='/C-O-H-Cu-cluster/38-Wullf/facet' data-search-prefix='/C-O-H-Cu-cluster/38-Wullf/facet ' data-count='4'><span class='nodeText'>facet</span>
+   </li>
+</ul>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='66' data-path='/C-O-H-Cu-cluster/55-D5h' data-search-prefix='' data-count='0'><span class='nodeText'>55-D5h</span>
+<ul>
+   <li class='node' index='67' data-path='/C-O-H-Cu-cluster/55-D5h/CHOCHO' data-search-prefix='/C-O-H-Cu-cluster/55-D5h/CHOCHO ' data-count='10'><span class='nodeText'>CHOCHO</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='68' data-path='/C-O-H-Cu-cluster/55-D5h/COCHO' data-search-prefix='/C-O-H-Cu-cluster/55-D5h/COCHO ' data-count='8'><span class='nodeText'>COCHO</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='69' data-path='/C-O-H-Cu-cluster/55-D5h/COCO' data-search-prefix='/C-O-H-Cu-cluster/55-D5h/COCO ' data-count='10'><span class='nodeText'>COCO</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='70' data-path='/C-O-H-Cu-cluster/55-D5h/corner1' data-search-prefix='/C-O-H-Cu-cluster/55-D5h/corner1 ' data-count='3'><span class='nodeText'>corner1</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='71' data-path='/C-O-H-Cu-cluster/55-D5h/corner2' data-search-prefix='/C-O-H-Cu-cluster/55-D5h/corner2 ' data-count='3'><span class='nodeText'>corner2</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='72' data-path='/C-O-H-Cu-cluster/55-D5h/edge12' data-search-prefix='/C-O-H-Cu-cluster/55-D5h/edge12 ' data-count='3'><span class='nodeText'>edge12</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='73' data-path='/C-O-H-Cu-cluster/55-D5h/edge3' data-search-prefix='/C-O-H-Cu-cluster/55-D5h/edge3 ' data-count='3'><span class='nodeText'>edge3</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='74' data-path='/C-O-H-Cu-cluster/55-D5h/edge4' data-search-prefix='/C-O-H-Cu-cluster/55-D5h/edge4 ' data-count='3'><span class='nodeText'>edge4</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='75' data-path='/C-O-H-Cu-cluster/55-D5h/facet' data-search-prefix='/C-O-H-Cu-cluster/55-D5h/facet ' data-count='2'><span class='nodeText'>facet</span>
+   </li>
+</ul>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='76' data-path='/C-O-H-Cu-cluster/55-Ih' data-search-prefix='' data-count='0'><span class='nodeText'>55-Ih</span>
+<ul>
+   <li class='node' index='77' data-path='/C-O-H-Cu-cluster/55-Ih/CHOCHO' data-search-prefix='/C-O-H-Cu-cluster/55-Ih/CHOCHO ' data-count='4'><span class='nodeText'>CHOCHO</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='78' data-path='/C-O-H-Cu-cluster/55-Ih/COCHO' data-search-prefix='/C-O-H-Cu-cluster/55-Ih/COCHO ' data-count='4'><span class='nodeText'>COCHO</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='79' data-path='/C-O-H-Cu-cluster/55-Ih/COCO' data-search-prefix='/C-O-H-Cu-cluster/55-Ih/COCO ' data-count='2'><span class='nodeText'>COCO</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='80' data-path='/C-O-H-Cu-cluster/55-Ih/corner' data-search-prefix='/C-O-H-Cu-cluster/55-Ih/corner ' data-count='4'><span class='nodeText'>corner</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='81' data-path='/C-O-H-Cu-cluster/55-Ih/edge' data-search-prefix='/C-O-H-Cu-cluster/55-Ih/edge ' data-count='4'><span class='nodeText'>edge</span>
+   </li>
+</ul>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='82' data-path='/C-O-H-Cu-cluster/79-Wullf' data-search-prefix='' data-count='0'><span class='nodeText'>79-Wullf</span>
+<ul>
+   <li class='node' index='83' data-path='/C-O-H-Cu-cluster/79-Wullf/CHOCHO' data-search-prefix='/C-O-H-Cu-cluster/79-Wullf/CHOCHO ' data-count='10'><span class='nodeText'>CHOCHO</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='84' data-path='/C-O-H-Cu-cluster/79-Wullf/COCHO' data-search-prefix='/C-O-H-Cu-cluster/79-Wullf/COCHO ' data-count='10'><span class='nodeText'>COCHO</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='85' data-path='/C-O-H-Cu-cluster/79-Wullf/COCO' data-search-prefix='/C-O-H-Cu-cluster/79-Wullf/COCO ' data-count='6'><span class='nodeText'>COCO</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='86' data-path='/C-O-H-Cu-cluster/79-Wullf/corner' data-search-prefix='/C-O-H-Cu-cluster/79-Wullf/corner ' data-count='4'><span class='nodeText'>corner</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='87' data-path='/C-O-H-Cu-cluster/79-Wullf/edge' data-search-prefix='/C-O-H-Cu-cluster/79-Wullf/edge ' data-count='4'><span class='nodeText'>edge</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='88' data-path='/C-O-H-Cu-cluster/79-Wullf/facet' data-search-prefix='/C-O-H-Cu-cluster/79-Wullf/facet ' data-count='4'><span class='nodeText'>facet</span>
+   </li>
+</ul>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='89' data-path='/C-O-H-Cu-cluster/85-Wullf' data-search-prefix='' data-count='0'><span class='nodeText'>85-Wullf</span>
+<ul>
+   <li class='node' index='90' data-path='/C-O-H-Cu-cluster/85-Wullf/corner' data-search-prefix='/C-O-H-Cu-cluster/85-Wullf/corner ' data-count='2'><span class='nodeText'>corner</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='91' data-path='/C-O-H-Cu-cluster/85-Wullf/edge1' data-search-prefix='/C-O-H-Cu-cluster/85-Wullf/edge1 ' data-count='2'><span class='nodeText'>edge1</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='92' data-path='/C-O-H-Cu-cluster/85-Wullf/edge2' data-search-prefix='/C-O-H-Cu-cluster/85-Wullf/edge2 ' data-count='2'><span class='nodeText'>edge2</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='93' data-path='/C-O-H-Cu-cluster/85-Wullf/facet' data-search-prefix='/C-O-H-Cu-cluster/85-Wullf/facet ' data-count='2'><span class='nodeText'>facet</span>
+   </li>
+</ul>
+   </li>
+</ul>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='94' data-path='/bare-Cu-cluster' data-search-prefix='' data-count='0'><span class='nodeText'>bare-Cu-cluster</span>
+<ul>
+   <li class='node' index='95' data-path='/bare-Cu-cluster/rpso' data-search-prefix='/bare-Cu-cluster/rpso ' data-count='20'><span class='nodeText'>rpso</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='96' data-path='/bare-Cu-cluster/slab' data-search-prefix='/bare-Cu-cluster/slab ' data-count='14'><span class='nodeText'>slab</span>
+   </li>
+</ul>
+<ul>
+   <li class='node' index='97' data-path='/bare-Cu-cluster/symmetric_' data-search-prefix='/bare-Cu-cluster/symmetric_ ' data-count='15'><span class='nodeText'>symmetric_</span>
+</li></ul>
+</li></ul>
+							</li>
+						</ul>
+                     </div>
+					</div>
+					<div id='detailDiv' class='col-md-9'>
+						<div class='detailTableAffix'>							<div id='detailTableAffixContent'>
+								<table id='detailTable' class='table'></table>
+							</div>
+						</div>
+					</div>
+				</div>
+<script type='text/javascript'>
+var nodeOccupation = {"node3": 1,"node4": 1,"node5": 1,"node6": 1,"node7": 1,"node8": 1,"node9": 1,"node11": 1,"node12": 1,"node13": 1,"node14": 1,"node15": 1,"node16": 1,"node17": 1,"node18": 1,"node20": 1,"node21": 1,"node22": 1,"node23": 1,"node24": 1,"node25": 1,"node27": 1,"node28": 1,"node29": 1,"node30": 1,"node32": 1,"node33": 1,"node34": 1,"node35": 1,"node37": 1,"node38": 1,"node39": 1,"node40": 1,"node41": 1,"node42": 1,"node44": 1,"node45": 1,"node46": 1,"node47": 1,"node48": 1,"node49": 1,"node51": 1,"node52": 1,"node53": 1,"node54": 1,"node56": 1,"node57": 1,"node58": 1,"node59": 1,"node61": 1,"node62": 1,"node63": 1,"node64": 1,"node65": 1,"node67": 1,"node68": 1,"node69": 1,"node70": 1,"node71": 1,"node72": 1,"node73": 1,"node74": 1,"node75": 1,"node77": 1,"node78": 1,"node79": 1,"node80": 1,"node81": 1,"node83": 1,"node84": 1,"node85": 1,"node86": 1,"node87": 1,"node88": 1,"node90": 1,"node91": 1,"node92": 1,"node93": 1,"node95": 1,"node96": 1,"node97": 1,};
+columns = [{'title': 'parent', 'type': 'string', 'visible': false, 'orderable': false},{'title': 'name', 'type': 'string', 'visible': false, 'orderable': false},{'title': 'Preview', 'type': 'string', 'width': '80px', 'orderable': false, 'className': 'treecell'},{'title': 'Title', 'type': 'string', 'width': '70px', 'orderable': false, 'className': 'treecell'},{'title': 'Issue Date', 'type': 'string', 'width': '20%', 'orderable': false, 'className': 'treecell'},{'title': 'Author(s)', 'type': 'string', 'width': '20%', 'orderable': false, 'className': 'treecell'},{'title': 'Program', 'type': 'string', 'width': '20%', 'orderable': false, 'className': 'treecell'},{'title': 'Calculation type', 'type': 'string', 'width': '10%', 'orderable': false, 'className': 'treecell'},{'title': 'Method(s)', 'type': 'string', 'width': '5%', 'orderable': false, 'className': 'treecell'},{'title': 'Basis Set', 'type': 'string', 'width': '5%', 'orderable': false, 'className': 'treecell'},{'title': 'Energy', 'type': 'string', 'width': '5%', 'orderable': false, 'className': 'treecell'},{'title': 'Solv.', 'type': 'string', 'width': '20px', 'orderable': false, 'className': 'treecell'},{'title': 'Vibr.', 'type': 'string', 'width': '20px', 'orderable': false, 'className': 'treecell'},{'title': 'Orb.', 'type': 'string', 'width': '20px', 'orderable': false, 'className': 'treecell'},{'title': 'handle', 'type': 'string', 'visible': false, 'orderable': false}];
+columnDefs = [{  'render' :  function ( data, type, row, meta ) {
+							return "<a href=" + data + "  class='highslide' onclick='return hs.expand(this)'><img src=" + data + "  alt='Highslide JS' title='Click to enlarge'  height='80' width='80'></img></a>";},
+  'responsivePriority': 1,  'targets' : 2
+},{  'render' :  function ( data, type, row, meta ) {
+							return "<div class='titleCell'><b><a href=" + row[row.length - 2] + ">" + (mode == 'tree'? row[1] : row[row.length - 1]) + "</a></b></div>" ;},
+  'responsivePriority': 1,  'targets': 3
+},{  'render' :  function ( data, type, row, meta ) {
+							return "<div class='dateCell'>" + data + "</div>" ;},
+  'responsivePriority': 2,  'targets': 4
+},{  'render' :  function ( data, type, row, meta ) {
+							return "<div class='authorCell'>" + data + "</div>" ;},
+  'responsivePriority': 2,  'targets': 5
+},{  'render' :  function ( data, type, row, meta ) {
+							return "<div class='genericCell'>" + data + "</div>" ;},
+  'responsivePriority': 2,  'targets': 6
+},{  'render' :  function ( data, type, row, meta ) {
+							return "<div class='genericCell'>" + data + "</div>" ;},
+  'responsivePriority': 2,  'targets': 7
+},{  'render' :  function ( data, type, row, meta ) {
+							return "<div class='genericCell'>" + data + "</div>" ;},
+  'responsivePriority': 2,  'targets': 8
+},{  'render' :  function ( data, type, row, meta ) {
+							return "<div class='genericCell'>" + data + "</div>" ;},
+  'responsivePriority': 2,  'targets': 9
+},{  'render' :  function ( data, type, row, meta ) {
+							return "<div class='genericCell'>" + data + "</div>" ;},
+  'responsivePriority': 2,  'targets': 10
+},{  'render' :  function ( data, type, row, meta ) {
+							return "<span class='glyphicon glyphicon-" + ((data)?'ok':'remove') + "'></span>";},
+  'responsivePriority': 10001,  'targets' : 11
+},{  'render' :  function ( data, type, row, meta ) {
+							return "<span class='glyphicon glyphicon-" + ((data)?'ok':'remove') + "'></span>";},
+  'responsivePriority': 10001,  'targets' : 12
+},{  'render' :  function ( data, type, row, meta ) {
+							return "<span class='glyphicon glyphicon-" + ((data)?'ok':'remove') + "'></span>";},
+  'responsivePriority': 10001,  'targets' : 13
+}];
+$(document).ready(function(){
+		initTreeLazy('calculationTree', 'detailTable', columns, columnDefs, 541, 3, 3);
+       resetTreeLazy('calculationTree', 'detailTable', 541);
+});
+</script>
+
+
+
+
+<div class="row">
+	<div class="col-md-3 col-sm-12">
+	
+		
+
+  
+ 	</div>
+ 	<div class="col-md-9 col-sm-12" style="margin-top:8px; display:flex; justify-content: flex-end">
+
+
+  		<div>
+			<a alt="Share link" href="https://www.addtoany.com/share#url=https%3A%2F%2Fiochem-bd.bsc.es%2Fbrowse%2Fcollection-home-tree.jsp&amp;title=" target="_blank"><img src="https://static.addtoany.com/buttons/a2a.svg" width="32" height="32" style="background-color:royalblue" alt="Share"></a>
+			<a alt="Share on Facebook" href="https://www.addtoany.com/add_to/facebook?linkurl=https%3A%2F%2Fiochem-bd.bsc.es%2Fbrowse%2Fcollection-home-tree.jsp&amp;linkname=" target="_blank"><img src="https://static.addtoany.com/buttons/facebook.svg" width="32" height="32" style="background-color:royalblue"  alt="Facebook"></a>
+			<a alt="Share on Twitter" href="https://www.addtoany.com/add_to/twitter?linkurl=https%3A%2F%2Fiochem-bd.bsc.es%2Fbrowse%2Fcollection-home-tree.jsp&amp;linkname=" target="_blank"><img src="https://static.addtoany.com/buttons/twitter.svg" width="32" height="32" style="background-color:royalblue" alt="Twitter"></a>
+			<a alt="Share via email" href="https://www.addtoany.com/add_to/email?linkurl=https%3A%2F%2Fiochem-bd.bsc.es%2Fbrowse%2Fcollection-home-tree.jsp&amp;linkname=" target="_blank"><img src="https://static.addtoany.com/buttons/email.svg" width="32" height="32" style="background-color:royalblue" alt="Email"></a>
+		</div>
+
+    <span><a href="/browse/feed/rss_1.0/100/338270"><img src="/browse/image/rss1.png" alt="RSS Feed" width="43" height="32" style="margin-left:2px" /></a></span>
+
+    <span><a href="/browse/feed/rss_2.0/100/338270"><img src="/browse/image/rss2.png" alt="RSS Feed" width="43" height="32" style="margin-left:2px" /></a></span>
+
+    <span><a href="/browse/feed/atom_1.0/100/338270"><img src="/browse/image/rss.gif" alt="RSS Feed" width="36" height="32" style="margin-left:2px" /></a></span>
+		
+	</div>      
+</div>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+
+	</div>
+	<div class="col-md-3">
+                    
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="col-md-12">
+<h3 class="facets">Discover</h3>
+<div id="facets" class="facetsBox row panel">
+<div id="facet_author" class="facet col-md-12">
+	    <span class="facetName">Author</span>
+	    <ul class="list-group"><li class="list-group-item"><span class="badge">335</span> <a href="/browse/handle/100/338270/simple-search?filterquery=Xuning%2C+Wang&amp;filtername=author&amp;filtertype=equals"
+	                title="Filter by Xuning, Wang">
+	                Xuning, Wang</a></li></ul></div><div id="facet_subject" class="facet col-md-12">
+	    <span class="facetName">Subject</span>
+	    <ul class="list-group"><li class="list-group-item"><span class="badge">335</span> <a href="/browse/handle/100/338270/simple-search?filterquery=C-C+coupling&amp;filtername=subject&amp;filtertype=equals"
+	                title="Filter by C-C coupling">
+	                C-C coupling</a></li><li class="list-group-item"><span class="badge">335</span> <a href="/browse/handle/100/338270/simple-search?filterquery=cluster&amp;filtername=subject&amp;filtertype=equals"
+	                title="Filter by cluster">
+	                cluster</a></li><li class="list-group-item"><span class="badge">335</span> <a href="/browse/handle/100/338270/simple-search?filterquery=CO2+reduction&amp;filtername=subject&amp;filtertype=equals"
+	                title="Filter by CO2 reduction">
+	                CO2 reduction</a></li><li class="list-group-item"><span class="badge">335</span> <a href="/browse/handle/100/338270/simple-search?filterquery=Copper&amp;filtername=subject&amp;filtertype=equals"
+	                title="Filter by Copper">
+	                Copper</a></li><li class="list-group-item"><span class="badge">335</span> <a href="/browse/handle/100/338270/simple-search?filterquery=Cu&amp;filtername=subject&amp;filtertype=equals"
+	                title="Filter by Cu">
+	                Cu</a></li></ul></div><div id="facet_programName" class="facet col-md-12">
+	    <span class="facetName">Program name</span>
+	    <ul class="list-group"><li class="list-group-item"><span class="badge">335</span> <a href="/browse/handle/100/338270/simple-search?filterquery=vasp&amp;filtername=programName&amp;filtertype=equals"
+	                title="Filter by vasp">
+	                vasp</a></li></ul></div><div id="facet_calculationType" class="facet col-md-12">
+	    <span class="facetName">Calculation type</span>
+	    <ul class="list-group"><li class="list-group-item"><span class="badge">320</span> <a href="/browse/handle/100/338270/simple-search?filterquery=Geometry+optimization&amp;filtername=calculationType&amp;filtertype=equals"
+	                title="Filter by Geometry optimization">
+	                Geometry optimization</a></li><li class="list-group-item"><span class="badge">15</span> <a href="/browse/handle/100/338270/simple-search?filterquery=Single+point&amp;filtername=calculationType&amp;filtertype=equals"
+	                title="Filter by Single point">
+	                Single point</a></li></ul></div><div id="facet_method" class="facet col-md-12">
+	    <span class="facetName">Method</span>
+	    <ul class="list-group"><li class="list-group-item"><span class="badge">335</span> <a href="/browse/handle/100/338270/simple-search?filterquery=DFT&amp;filtername=method&amp;filtertype=equals"
+	                title="Filter by DFT">
+	                DFT</a></li></ul></div></div></div>
+    	   
+    		
+		<div class="panel">
+			<div class="panel-body">              
+		    	<form method="post" action="/browse/metadataexport">
+		        	<input type="hidden" name="handle" value="100/338270" />
+		            <input class="btn btn-primary col-md-12" type="submit" value="Export .csv" />
+		       	</form>
+			</div>
+		</div>
+	
+  
+    </div>
+    </div>       
+
+</div>
+</main>
+
+	</body>
+</html>
+

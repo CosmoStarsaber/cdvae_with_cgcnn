@@ -1,0 +1,14 @@
+data_image0
+_chemical_formula_structural       CO2
+_chemical_formula_sum              "C1 O2"
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_Cartn_x
+  _atom_site_Cartn_y
+  _atom_site_Cartn_z
+  _atom_site_occupancy
+  C   C1        1.0  7.670136  4.811282  10.150742  1.0000
+  O   O1        1.0  6.955393  5.349764  10.877761  1.0000
+  O   O2        1.0  8.391027  4.27371  9.417599  1.0000

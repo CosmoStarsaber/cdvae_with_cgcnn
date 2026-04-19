@@ -1,0 +1,32 @@
+data_image0
+_chemical_formula_structural       Ag7
+_chemical_formula_sum              "Ag7"
+_cell_length_a       15.000000000572633
+_cell_length_b       15.000000000572633
+_cell_length_c       15.000000000572633
+_cell_angle_alpha    90.0
+_cell_angle_beta     90.0
+_cell_angle_gamma    90.0
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ag  Ag1       1.0  0.5000000000050634  0.49999999999979505  0.49999999999927847  1.0000
+  Ag  Ag2       1.0  0.5000000000162454  0.5000000000123246  0.5000000000040057  1.0000
+  Ag  Ag3       1.0  0.4999999999993948  0.49999999998742994  0.4999999999883395  1.0000
+  Ag  Ag4       1.0  0.49999999999833616  0.5000000000125702  0.5000000000095421  1.0000
+  Ag  Ag5       1.0  0.5000000000190878  0.49999999999595013  0.4999999999895695  1.0000
+  Ag  Ag6       1.0  0.49999999998760086  0.49999999999685607  0.49999999999960076  1.0000
+  Ag  Ag7       1.0  0.49999999998091227  0.5000000000084988  0.5000000000116606  1.0000

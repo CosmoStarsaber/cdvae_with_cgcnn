@@ -1,0 +1,27 @@
+data_image0
+_chemical_formula_structural       Zn8Se8
+_chemical_formula_sum              "Zn8 Se8"
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_Cartn_x
+  _atom_site_Cartn_y
+  _atom_site_Cartn_z
+  _atom_site_occupancy
+  Zn  Zn1       1.0  5.47896  4.36721  2.02922  1.0000
+  Zn  Zn2       1.0  0.16992  0.32041  5.60341  1.0000
+  Zn  Zn3       1.0  5.47896  0.30786  2.03019  1.0000
+  Zn  Zn4       1.0  0.16962  4.37899  5.60279  1.0000
+  Zn  Zn5       1.0  2.60931  2.3381  0.0  1.0000
+  Zn  Zn6       1.0  2.60931  6.39745  4.05941  1.0000
+  Zn  Zn7       1.0  2.60931  6.3964  0.0  1.0000
+  Zn  Zn8       1.0  2.60931  2.33705  4.05941  1.0000
+  Se  Se1       1.0  4.04491  0.30786  0.0  1.0000
+  Se  Se2       1.0  4.04491  4.36721  4.05941  1.0000
+  Se  Se3       1.0  1.17376  6.3964  2.03019  1.0000
+  Se  Se4       1.0  1.32782  2.34835  6.19068  1.0000
+  Se  Se5       1.0  1.17376  2.3381  2.03019  1.0000
+  Se  Se6       1.0  1.32854  6.4084  6.1882  1.0000
+  Se  Se7       1.0  4.04491  4.36721  0.00113  1.0000
+  Se  Se8       1.0  4.04491  0.30786  4.06037  1.0000

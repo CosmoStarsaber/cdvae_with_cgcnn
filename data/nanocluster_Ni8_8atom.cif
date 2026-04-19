@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       Ni8
+_chemical_formula_sum              "Ni8"
+_cell_length_a       15.000000000496238
+_cell_length_b       15.000000000496238
+_cell_length_c       15.000000000496238
+_cell_angle_alpha    90.0
+_cell_angle_beta     90.0
+_cell_angle_gamma    90.0
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ni  Ni1       1.0  0.4999999999899742  0.5000000000005883  0.49999999999557354  1.0000
+  Ni  Ni2       1.0  0.5000000000015491  0.5000000000106527  0.49999999999774497  1.0000
+  Ni  Ni3       1.0  0.4999999999960816  0.5000000000078767  0.49999999998345873  1.0000
+  Ni  Ni4       1.0  0.4999999999957695  0.5000000000027218  0.5000000000098939  1.0000
+  Ni  Ni5       1.0  0.5000000000100259  0.4999999999994562  0.5000000000048133  1.0000
+  Ni  Ni6       1.0  0.49999999999839706  0.4999999999893473  0.5000000000024435  1.0000
+  Ni  Ni7       1.0  0.5000000000044131  0.49999999999723704  0.49999999999049893  1.0000
+  Ni  Ni8       1.0  0.5000000000039705  0.49999999999145983  0.5000000000165412  1.0000

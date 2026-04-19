@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       In8
+_chemical_formula_sum              "In8"
+_cell_length_a       15.000000000564807
+_cell_length_b       15.000000000564807
+_cell_length_c       15.000000000564807
+_cell_angle_alpha    90.0
+_cell_angle_beta     90.0
+_cell_angle_gamma    90.0
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  In  In1       1.0  0.49999999999226524  0.5000000000070627  0.5000000000106536  1.0000
+  In  In2       1.0  0.49999999999474437  0.49999999999527456  0.4999999999938545  1.0000
+  In  In3       1.0  0.4999999999816721  0.5000000000129159  0.49999999999374345  1.0000
+  In  In4       1.0  0.5000000000183278  0.50000000000464  0.5000000000061612  1.0000
+  In  In5       1.0  0.5000000000051211  0.49999999999261335  0.5000000000124187  1.0000
+  In  In6       1.0  0.5000000000045192  0.5000000000188268  0.500000000001817  1.0000
+  In  In7       1.0  0.500000000009368  0.5000000000053203  0.49999999998758116  1.0000
+  In  In8       1.0  0.5000000000105468  0.49999999998117306  0.4999999999950984  1.0000

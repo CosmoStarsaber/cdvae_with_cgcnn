@@ -1,0 +1,31 @@
+data_image0
+_chemical_formula_structural       Cu6
+_chemical_formula_sum              "Cu6"
+_cell_length_a       15.000000000946331
+_cell_length_b       15.000000000946331
+_cell_length_c       15.000000000946331
+_cell_angle_alpha    90.0
+_cell_angle_beta     90.0
+_cell_angle_gamma    90.0
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Cu  Cu1       1.0  0.49999999999779826  0.5000000000315443  0.49999999998028527  1.0000
+  Cu  Cu2       1.0  0.49999999999967415  0.5000000000196663  0.499999999989196  1.0000
+  Cu  Cu3       1.0  0.5000000000017306  0.5000000000073055  0.4999999999974252  1.0000
+  Cu  Cu4       1.0  0.5000000000022018  0.49999999999445083  0.5000000000051534  1.0000
+  Cu  Cu5       1.0  0.5000000000009392  0.49999999998145217  0.5000000000124857  1.0000
+  Cu  Cu6       1.0  0.49999999999884953  0.4999999999684556  0.5000000000197147  1.0000

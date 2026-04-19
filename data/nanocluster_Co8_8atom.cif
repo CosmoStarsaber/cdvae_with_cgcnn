@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       Co8
+_chemical_formula_sum              "Co8"
+_cell_length_a       15.000000000439321
+_cell_length_b       15.000000000439321
+_cell_length_c       15.000000000439321
+_cell_angle_alpha    90.0
+_cell_angle_beta     90.0
+_cell_angle_gamma    90.0
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Co  Co1       1.0  0.5000000000056268  0.499999999985356  0.4999999999957478  1.0000
+  Co  Co2       1.0  0.499999999993921  0.4999999999949372  0.4999999999936938  1.0000
+  Co  Co3       1.0  0.5000000000032686  0.5000000000097745  0.500000000006255  1.0000
+  Co  Co4       1.0  0.5000000000004199  0.49999999999474987  0.5000000000073798  1.0000
+  Co  Co5       1.0  0.499999999988912  0.5000000000045383  0.5000000000045457  1.0000
+  Co  Co6       1.0  0.4999999999966416  0.5000000000100775  0.4999999999926203  1.0000
+  Co  Co7       1.0  0.5000000000085311  0.5000000000000099  0.49999999999568834  1.0000
+  Co  Co8       1.0  0.500000000011088  0.5000000000146441  0.49999999999345657  1.0000

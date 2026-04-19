@@ -1,0 +1,30 @@
+data_image0
+_chemical_formula_structural       Ru5
+_chemical_formula_sum              "Ru5"
+_cell_length_a       15.000000000657854
+_cell_length_b       15.000000000657854
+_cell_length_c       15.000000000657854
+_cell_angle_alpha    90.0
+_cell_angle_beta     90.0
+_cell_angle_gamma    90.0
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ru  Ru1       1.0  0.5000000000106016  0.4999999999918223  0.5000000000057876  1.0000
+  Ru  Ru2       1.0  0.5000000000219285  0.49999999998498956  0.5000000000085509  1.0000
+  Ru  Ru3       1.0  0.4999999999780715  0.5000000000150103  0.49999999999144895  1.0000
+  Ru  Ru4       1.0  0.49999999998775235  0.5000000000073105  0.49999999999688266  1.0000
+  Ru  Ru5       1.0  0.4999999999986422  0.4999999999992106  0.5000000000020748  1.0000

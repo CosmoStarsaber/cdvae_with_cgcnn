@@ -1,0 +1,31 @@
+data_image0
+_chemical_formula_structural       Ru6
+_chemical_formula_sum              "Ru6"
+_cell_length_a       15.000000000413438
+_cell_length_b       15.000000000413438
+_cell_length_c       15.000000000413438
+_cell_angle_alpha    90.0
+_cell_angle_beta     90.0
+_cell_angle_gamma    90.0
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ru  Ru1       1.0  0.5000000000137813  0.4999999999903649  0.49999999999457684  1.0000
+  Ru  Ru2       1.0  0.4999999999980702  0.4999999999908308  0.4999999999942706  1.0000
+  Ru  Ru3       1.0  0.5000000000071709  0.5000000000038397  0.4999999999989781  1.0000
+  Ru  Ru4       1.0  0.49999999999206624  0.5000000000062229  0.49999999999220984  1.0000
+  Ru  Ru5       1.0  0.49999999998621875  0.49999999999626843  0.5000000000036662  1.0000
+  Ru  Ru6       1.0  0.49999999999506994  0.5000000000096352  0.5000000000077901  1.0000

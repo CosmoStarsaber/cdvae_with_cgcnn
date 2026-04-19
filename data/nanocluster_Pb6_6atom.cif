@@ -1,0 +1,31 @@
+data_image0
+_chemical_formula_structural       Pb6
+_chemical_formula_sum              "Pb6"
+_cell_length_a       15.000000000436753
+_cell_length_b       15.000000000436753
+_cell_length_c       15.000000000436753
+_cell_angle_alpha    90.0
+_cell_angle_beta     90.0
+_cell_angle_gamma    90.0
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Pb  Pb1       1.0  0.499999999985871  0.49999999998830036  0.5000000000000394  1.0000
+  Pb  Pb2       1.0  0.499999999989338  0.5000000000069712  0.499999999990773  1.0000
+  Pb  Pb3       1.0  0.5000000000010612  0.4999999999901748  0.49999999998544153  1.0000
+  Pb  Pb4       1.0  0.5000000000141289  0.49999999999488054  0.49999999999996825  1.0000
+  Pb  Pb5       1.0  0.49999999999894024  0.49999999999302946  0.5000000000145584  1.0000
+  Pb  Pb6       1.0  0.5000000000024722  0.5000000000116995  0.500000000005234  1.0000

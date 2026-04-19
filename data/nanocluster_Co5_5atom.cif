@@ -1,0 +1,30 @@
+data_image0
+_chemical_formula_structural       Co5
+_chemical_formula_sum              "Co5"
+_cell_length_a       15.000000000313054
+_cell_length_b       15.000000000313054
+_cell_length_c       15.000000000313054
+_cell_angle_alpha    90.0
+_cell_angle_beta     90.0
+_cell_angle_gamma    90.0
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Co  Co1       1.0  0.49999999999908784  0.49999999999207767  0.4999999999899095  1.0000
+  Co  Co2       1.0  0.500000000007824  0.4999999999973827  0.49999999999965977  1.0000
+  Co  Co3       1.0  0.4999999999895649  0.5000000000023225  0.49999999999258493  1.0000
+  Co  Co4       1.0  0.5000000000104352  0.5000000000072577  0.5000000000100906  1.0000
+  Co  Co5       1.0  0.4999999999980052  0.5000000000079224  0.5000000000024302  1.0000
