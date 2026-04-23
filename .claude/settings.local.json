@@ -1,7 +1,25 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python *)"
+      "Bash(python *)",
+      "WebSearch",
+      "Bash(PYTHONIOENCODING=utf-8 python *)",
+      "WebFetch(domain:iochem-bd.bsc.es)",
+      "WebFetch(domain:pubs.rsc.org)",
+      "WebFetch(domain:pubs.acs.org)",
+      "Bash(curl -sSLo \"D:/cdvae_with_cgcnn/data/paper_ag20_d5sc06306j.cif\" \"https://www.rsc.org/suppdata/d5/sc/d5sc06306j/d5sc06306j2.cif\" -w \"%{http_code} %{size_download}\")",
+      "Bash(curl -sSLo \"D:/cdvae_with_cgcnn/data/paper_ag14_d4cc00152d.cif\" \"https://www.rsc.org/suppdata/d4/cc/d4cc00152d/d4cc00152d2.cif\" -w \"%{http_code} %{size_download}\")",
+      "Bash(curl -sSLo \"D:/cdvae_with_cgcnn/data/paper_ag14_d5cc02587g.cif\" \"https://www.rsc.org/suppdata/d5/cc/d5cc02587g/d5cc02587g2.cif\" -w \"%{http_code} %{size_download}\")",
+      "Bash(curl -sSLo \"paper_ag19cu2_d4nr02702.cif\" \"https://www.rsc.org/suppdata/d4/nr/d4nr02702g/d4nr02702g2.cif\" -w \"ag19cu2: %{http_code} %{size_download}\\\\n\")",
+      "Bash(curl -sSLo \"paper_ag20cu10_d4qi03264k.cif\" \"https://www.rsc.org/suppdata/d4/qi/d4qi03264k/d4qi03264k2.cif\" -w \"ag20cu10: %{http_code} %{size_download}\\\\n\")",
+      "Bash(curl -sSLo \"paper_au8_natcom_46098x.cif\" \"https://static-content.springer.com/esm/art%3A10.1038%2Fs41467-024-46098-x/MediaObjects/41467_2024_46098_MOESM4_ESM.cif\" -w \"au8: %{http_code} %{size_download}\\\\n\")",
+      "Bash(curl -sSLo \"paper_agcu_d4mh01324g.cif\" \"https://www.rsc.org/suppdata/d4/mh/d4mh01324g/d4mh01324g2.cif\" -w \"agcu_cuboid: %{http_code} %{size_download}\\\\n\")",
+      "Bash(wait)",
+      "Bash(curl -I -L -s \"https://www.rsc.org/suppdata/d4/nr/d4nr02702g/d4nr02702g2.cif\")",
+      "Bash(curl -I -L -s \"https://www.rsc.org/suppdata/d4/mh/d4mh01324g/d4mh01324g2.cif\")",
+      "Bash(curl -I -L -s \"https://www.rsc.org/suppdata/d4/qi/d4qi03264k/d4qi03264k2.cif\")",
+      "Bash(KMP_DUPLICATE_LIB_OK=TRUE OMP_NUM_THREADS=4 python *)",
+      "Bash(PYTHONIOENCODING=utf-8 KMP_DUPLICATE_LIB_OK=TRUE OMP_NUM_THREADS=4 python *)"
     ]
   }
 }

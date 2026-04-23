@@ -1,387 +1,197 @@
 """
-CO2RR activity verification via descriptor-based screening.
+verify_and_generate_labels.py
 
-Reads all CIF files from data/, computes 7 descriptors correlated with
-CO2 electroreduction activity, scores each structure, and writes results
-to data/verify_results.csv.
-
-Descriptors (each scored 0-1):
-  1. metal_score      – presence of known CO2RR-active metals
-  2. d_band_proxy     – estimated d-band centre from coordination + electronegativity
-  3. active_site_score – fraction of under-coordinated metal atoms
-  4. size_score       – cluster size within known active range
-  5. en_score         – average metal electronegativity in optimal window
-  6. intermediate_score – presence of *CO, *COOH, *CHO, *OH fragments
-  7. surface_ratio    – surface-to-total atom ratio
-
-Total = weighted sum (0-100).
-Label: likely_active (>=60), uncertain (30-59), unlikely (<30).
+读取 data/ 下所有 CIF 文件，计算多维 CO2RR 结构/化学描述符，
+输出带列名的 data/id_prop.csv，并同步写出 data/id_prop_dimensions.csv。
 """
 
 import csv
+import glob
 import os
-import sys
 import warnings
-from collections import Counter
-from math import erf, sqrt
 
 import numpy as np
 from ase.io import read
-from ase.neighborlist import natural_cutoffs, NeighborList
+from ase.neighborlist import NeighborList, natural_cutoffs
 
 warnings.filterwarnings("ignore", category=UserWarning, module="ase")
 
-# ---------------------------------------------------------------------------
-# Constants
-# ---------------------------------------------------------------------------
-
-# Pauling electronegativity
 ELECTRONEG = {
     "Cu": 1.90, "Ag": 1.93, "Au": 2.54, "Zn": 1.65, "Ni": 1.91,
     "Pd": 2.20, "Co": 1.88, "Fe": 1.83, "Sn": 1.96, "Bi": 2.02,
     "In": 1.78, "Pb": 2.33, "Ru": 2.20, "Ti": 1.54, "Mo": 2.16,
     "Rh": 2.28, "Pt": 2.28, "Ir": 2.20, "Cd": 1.69, "Cr": 1.66,
-    "Mn": 1.55, "Mg": 1.31, "Al": 1.61, "Se": 2.55, "C": 2.55,
-    "O": 3.44, "H": 2.20, "N": 3.04, "S": 2.58, "P": 2.19,
-    "Cl": 3.16, "F": 3.98, "Br": 2.96, "I": 2.66, "B": 2.04,
-    "Si": 1.90, "K": 0.82, "Na": 0.93, "Ca": 1.00, "Ba": 0.89,
-    "Cs": 0.79, "Sr": 0.95, "La": 1.10, "Ce": 1.12, "V": 1.63,
-    "W": 2.36, "Nb": 1.60, "Ta": 1.50, "Re": 1.90, "Os": 2.20,
-    "Hf": 1.30, "Zr": 1.33, "Y": 1.22, "Sc": 1.36, "Ga": 1.81,
-    "Ge": 2.01, "As": 2.18, "Sb": 2.05, "Te": 2.10, "Li": 0.98,
-    "Be": 1.57,
+    "Mn": 1.55, "Mg": 1.31, "Al": 1.61,
 }
 
-# Metals known to be active for CO2RR
-CO2RR_METALS = {
-    "Cu", "Ag", "Au", "Zn", "Ni", "Pd", "Co", "Fe", "Sn", "Bi",
-    "In", "Pb", "Ru", "Ti", "Mo", "Rh", "Pt", "Ir",
-}
+CO2RR_METALS = {"Cu", "Ag", "Au", "Zn"}
+ALLOY_METALS = {"Ni", "Pd", "Co", "Fe", "Sn", "Bi", "In", "Pb", "Ru", "Ti", "Mo"}
+METAL_ELEMENTS = set(ELECTRONEG.keys())
 
-# Broad metal set for atom typing (active + inactive metals)
-NONMETAL_ELEMENTS = {
-    "H", "B", "C", "N", "O", "F", "Si", "P", "S", "Cl", "Se", "Br", "I", "As", "Te",
-}
-METAL_ELEMENTS = {el for el in ELECTRONEG if el not in NONMETAL_ELEMENTS}
-
-# Bulk reference coordination numbers (nearest neighbours in metal)
 BULK_CN = {
     "Cu": 12, "Ag": 12, "Au": 12, "Zn": 12, "Ni": 12,
     "Pd": 12, "Co": 12, "Fe": 8, "Sn": 6, "Bi": 3,
     "In": 4, "Pb": 12, "Ru": 12, "Ti": 12, "Mo": 8,
-    "Rh": 12, "Pt": 12, "Ir": 12, "Mg": 12,
 }
 
-# Weights for final score (must sum to 1)
-WEIGHTS = {
-    "metal_score": 0.20,
-    "d_band_proxy": 0.15,
-    "active_site_score": 0.15,
-    "size_score": 0.10,
-    "en_score": 0.10,
-    "intermediate_score": 0.20,
-    "surface_ratio": 0.10,
-}
-
-# ---------------------------------------------------------------------------
-# Descriptor functions
-# ---------------------------------------------------------------------------
+PROPERTY_COLUMNS = [
+    ("total_score", "加权 CO2RR 活性代理总分，综合金属成分、电子结构/位点和尺寸，范围 0-1"),
+    ("metal_score", "金属成分得分：活性金属占比越高越接近 1，范围 0-1"),
+    ("d_band_score", "d-band 代理得分：越接近经验吸附窗口越高，范围 0-1"),
+    ("undercoord_fraction", "低配位金属原子比例，表示潜在暴露活性位点密度，范围 0-1"),
+    ("size_score", "团簇尺寸适宜性得分：越接近经验活性窗口越高，范围 0-1"),
+    ("active_metal_fraction", "核心活性金属 Cu/Ag/Au/Zn 在金属原子中的占比，范围 0-1"),
+    ("alloy_metal_fraction", "合金辅助活性金属在金属原子中的占比，范围 0-1"),
+    ("metal_atom_fraction", "全结构中金属原子占比，反映团簇金属核相对有机配体的占比，范围 0-1"),
+    ("mean_metal_en", "金属原子平均电负性（Pauling 标度），非归一化实数"),
+]
 
 
 def get_metal_info(atoms):
-    """Return (metal_mask, metal_symbols, nonmetal_symbols)."""
     syms = np.array(atoms.get_chemical_symbols())
     metal_mask = np.array([s in METAL_ELEMENTS for s in syms])
-    return metal_mask, syms[metal_mask], syms[~metal_mask]
+    return metal_mask, syms[metal_mask]
 
 
-def score_metal(metal_syms):
-    """Fraction of atoms that are CO2RR-active metals, with bonus for diversity."""
-    if len(metal_syms) == 0:
-        return 0.0
-    n_active = sum(1 for s in metal_syms if s in CO2RR_METALS)
-    frac = n_active / len(metal_syms)
-    if frac == 0:
-        return 0.0
-    diversity = len(set(metal_syms) & CO2RR_METALS) / len(CO2RR_METALS)
-    return min(1.0, 0.7 * frac + 0.3 * min(diversity * 5, 1.0))
-
-
-def _coordination_numbers(atoms, metal_mask=None):
-    """Compute coordination number for each atom using natural cutoffs."""
+def _coordination_numbers(atoms, metal_mask):
     cutoffs = natural_cutoffs(atoms)
     nl = NeighborList(cutoffs, self_interaction=False, bothways=True)
     nl.update(atoms)
     cn = np.array([nl.get_neighbors(i)[0].shape[0] for i in range(len(atoms))])
-    if metal_mask is not None:
-        return cn[metal_mask]
-    return cn
+    return cn[metal_mask]
 
 
-def score_d_band(metal_syms, metal_cn):
-    """Proxy for d-band centre: under-coordinated metals near e.g. Cu/Au
-    have higher d-band centres -> stronger CO2 adsorption.
-    Uses electronegativity + under-coordination as proxy."""
+def score_metal_composition(metal_syms):
     if len(metal_syms) == 0:
-        return 0.0
+        return 0.0, 0.0, 0.0
+
+    core_active = sum(1 for s in metal_syms if s in CO2RR_METALS)
+    alloy_active = sum(1 for s in metal_syms if s in ALLOY_METALS)
+    active_frac = core_active / len(metal_syms)
+    alloy_frac = alloy_active / len(metal_syms)
+    metal_score = min(1.0, active_frac * 0.8 + alloy_frac * 0.2)
+    return metal_score, active_frac, alloy_frac
+
+
+def score_d_band_and_sites(metal_syms, metal_cn):
+    if len(metal_syms) == 0:
+        return 0.0, 0.0
+
     scores = []
+    n_under = 0
     for i, sym in enumerate(metal_syms):
         en = ELECTRONEG.get(sym, 2.0)
         bulk = BULK_CN.get(sym, 12)
         cn = metal_cn[i] if i < len(metal_cn) else bulk
-        # Under-coordination raises d-band centre; optimal window around -1.5 to -2.5 eV
-        # Higher EN pushes d-band down; under-coordination pushes it up
-        d_band_est = -(en * 1.2) + (1 - cn / max(bulk, 1)) * 0.8
-        # Score peaks around d_band = -1.5 to -2.5
-        s = max(0, 1 - abs(d_band_est - (-2.0)) / 1.5)
-        scores.append(s)
-    return float(np.mean(scores)) if scores else 0.0
-
-
-def score_active_sites(metal_syms, metal_cn):
-    """Fraction of under-coordinated metal atoms (< 80% of bulk CN)."""
-    if len(metal_syms) == 0:
-        return 0.0
-    n_under = 0
-    for i, sym in enumerate(metal_syms):
-        bulk = BULK_CN.get(sym, 12)
-        cn = metal_cn[i] if i < len(metal_cn) else bulk
         if cn < bulk * 0.8:
             n_under += 1
-    return n_under / len(metal_syms)
+        d_band_est = -(en * 1.2) + (1 - cn / max(bulk, 1)) * 0.8
+        score = max(0.0, 1 - abs(d_band_est - (-2.0)) / 1.5)
+        scores.append(score)
+
+    return float(np.mean(scores)), n_under / len(metal_syms)
 
 
 def score_size(n_atoms):
-    """Cluster size suitability: peak activity typically 4-500 metal atoms.
-    Gaussian-like score centred at ~50 atoms."""
     if n_atoms <= 0:
         return 0.0
-    log_n = np.log10(max(n_atoms, 1))
-    # Peak at log10(50) ~ 1.7, width covering 4-500
-    s = np.exp(-0.5 * ((log_n - 1.7) / 0.7) ** 2)
-    return float(s)
+    log_n = np.log10(n_atoms)
+    return float(np.exp(-0.5 * ((log_n - 1.7) / 0.8) ** 2))
 
 
-def score_electronegativity(metal_syms):
-    """Average metal electronegativity in the CO2RR optimal window (~1.8-2.3)."""
+def mean_metal_electronegativity(metal_syms):
     if len(metal_syms) == 0:
         return 0.0
-    ens = [ELECTRONEG.get(s, 2.0) for s in metal_syms]
-    avg_en = np.mean(ens)
-    # Optimal window 1.8-2.3 (Cu=1.9, Au=2.54, Ag=1.93, Zn=1.65)
-    if 1.8 <= avg_en <= 2.3:
-        return 1.0
-    dist = min(abs(avg_en - 1.8), abs(avg_en - 2.3))
-    return max(0, 1 - dist / 0.5)
+    values = [ELECTRONEG.get(sym, 2.0) for sym in metal_syms]
+    return float(np.mean(values))
 
 
-def _detect_intermediates(atoms):
-    """Detect CO2RR intermediate fragments (*CO, *COOH, *CHO, *OH, *O, *H)
-    by looking for C/O/H atoms bonded to metal atoms."""
-    syms = atoms.get_chemical_symbols()
-    n = len(atoms)
-    cutoffs = natural_cutoffs(atoms, mult=1.2)
-    nl = NeighborList(cutoffs, self_interaction=False, bothways=True)
-    nl.update(atoms)
+def compute_properties(fpath):
+    basename = os.path.basename(fpath)
+    atoms = read(fpath, format="cif")
+    metal_mask, metal_syms = get_metal_info(atoms)
+    if not metal_mask.any():
+        return basename, None
 
-    metal_idx = {i for i, s in enumerate(syms) if s in METAL_ELEMENTS}
-    if not metal_idx:
-        return {"CO": 0, "COOH": 0, "CHO": 0, "OH": 0, "COH": 0, "O": 0, "H_metal": 0}
+    metal_cn = _coordination_numbers(atoms, metal_mask)
+    metal_score, active_frac, alloy_frac = score_metal_composition(metal_syms)
+    d_band_score, undercoord_fraction = score_d_band_and_sites(metal_syms, metal_cn)
+    size_score = score_size(len(atoms))
+    metal_atom_fraction = float(np.sum(metal_mask) / len(atoms))
+    mean_en = mean_metal_electronegativity(metal_syms)
+    site_score = d_band_score * 0.6 + undercoord_fraction * 0.4
+    total_score = metal_score * 0.40 + site_score * 0.45 + size_score * 0.15
 
-    # Find non-metal atoms bonded to metals
-    ads_C, ads_O, ads_H = set(), set(), set()
-    for i in range(n):
-        if i in metal_idx:
-            continue
-        neighbors, _ = nl.get_neighbors(i)
-        if any(nb in metal_idx for nb in neighbors):
-            if syms[i] == "C":
-                ads_C.add(i)
-            elif syms[i] == "O":
-                ads_O.add(i)
-            elif syms[i] == "H":
-                ads_H.add(i)
-
-    # Detect fragments via connectivity among adsorbates
-    counts = {"CO": 0, "COOH": 0, "CHO": 0, "OH": 0, "COH": 0, "O": 0, "H_metal": 0}
-
-    # CO: C bonded to O, both adsorbed on metal
-    for c in ads_C:
-        nb_c, _ = nl.get_neighbors(c)
-        o_neighbors = [j for j in nb_c if j in ads_O]
-        if o_neighbors:
-            counts["CO"] += 1
-
-    # CHO: C bonded to H and O
-    for c in ads_C:
-        nb_c, _ = nl.get_neighbors(c)
-        has_h = any(j in ads_H for j in nb_c)
-        has_o = any(j in ads_O for j in nb_c)
-        if has_h and has_o:
-            counts["CHO"] += 1
-
-    # COOH: C bonded to two O (one OH)
-    for c in ads_C:
-        nb_c, _ = nl.get_neighbors(c)
-        o_nb = [j for j in nb_c if j in ads_O]
-        if len(o_nb) >= 2:
-            counts["COOH"] += 1
-
-    # OH: O bonded to H, on metal
-    for o in ads_O:
-        nb_o, _ = nl.get_neighbors(o)
-        if any(j in ads_H for j in nb_o):
-            counts["OH"] += 1
-
-    # COH: C bonded to O and H
-    for c in ads_C:
-        nb_c, _ = nl.get_neighbors(c)
-        has_o = any(j in ads_O for j in nb_c)
-        has_h = any(j in ads_H for j in nb_c)
-        if has_o and has_h:
-            counts["COH"] += 1
-
-    # Bare O on metal
-    counts["O"] = len(ads_O)
-
-    # H on metal
-    counts["H_metal"] = len(ads_H)
-
-    return counts
-
-
-def score_intermediate(atoms):
-    """Score based on detected CO2RR intermediates."""
-    frags = _detect_intermediates(atoms)
-    total = sum(frags.values())
-    if total == 0:
-        return 0.0
-    # Weight intermediates by relevance
-    weights = {"CO": 1.0, "COOH": 1.0, "CHO": 1.0, "OH": 0.8,
-               "COH": 0.9, "O": 0.5, "H_metal": 0.3}
-    weighted = sum(frags.get(k, 0) * w for k, w in weights.items())
-    return min(1.0, weighted / 3.0)
-
-
-def score_surface_ratio(metal_mask, metal_cn, metal_syms):
-    """Fraction of surface (under-coordinated) metal atoms relative to all atoms."""
-    if len(metal_mask) == 0 or metal_mask.sum() == 0:
-        return 0.0
-    n_total = len(metal_mask)
-    # Surface metal atoms: CN < 80% of bulk reference
-    n_surface = 0
-    for i, sym in enumerate(metal_syms):
-        bulk = BULK_CN.get(sym, 12)
-        cn = metal_cn[i] if i < len(metal_cn) else bulk
-        if cn < bulk * 0.8:
-            n_surface += 1
-    if n_total == 0:
-        return 0.0
-    ratio = n_surface / n_total
-    return min(1.0, ratio * 2.0)
-
-
-# ---------------------------------------------------------------------------
-# Main verification
-# ---------------------------------------------------------------------------
+    props = {
+        "total_score": round(float(total_score), 4),
+        "metal_score": round(float(metal_score), 4),
+        "d_band_score": round(float(d_band_score), 4),
+        "undercoord_fraction": round(float(undercoord_fraction), 4),
+        "size_score": round(float(size_score), 4),
+        "active_metal_fraction": round(float(active_frac), 4),
+        "alloy_metal_fraction": round(float(alloy_frac), 4),
+        "metal_atom_fraction": round(float(metal_atom_fraction), 4),
+        "mean_metal_en": round(float(mean_en), 4),
+    }
+    return basename, props
 
 
 def verify_single(fpath):
-    """Verify a single CIF file. Returns dict of descriptor scores + total."""
     basename = os.path.basename(fpath)
-    result = {
-        "filename": basename,
-        "metal_score": 0, "d_band_proxy": 0, "active_site_score": 0,
-        "size_score": 0, "en_score": 0, "intermediate_score": 0,
-        "surface_ratio": 0, "total_score": 0, "label": "error",
-        "n_atoms": 0, "composition": "", "error": "",
-    }
     try:
-        atoms = read(fpath, format="cif")
-        syms = atoms.get_chemical_symbols()
-        comp = dict(Counter(syms))
-        comp_str = " ".join(f"{k}{v}" for k, v in sorted(comp.items()))
-        result["n_atoms"] = len(atoms)
-        result["composition"] = comp_str
+        _, props = compute_properties(fpath)
+        if props is None:
+            return basename, 0.0
+        return basename, props["total_score"]
+    except Exception:
+        return basename, 0.0
 
-        metal_mask, metal_syms, nonmetal_syms = get_metal_info(atoms)
-        metal_cn = _coordination_numbers(atoms, metal_mask) if metal_mask.any() else np.array([])
 
-        result["metal_score"] = round(score_metal(metal_syms), 4)
-        result["d_band_proxy"] = round(score_d_band(metal_syms, metal_cn), 4)
-        result["active_site_score"] = round(score_active_sites(metal_syms, metal_cn), 4)
-        result["size_score"] = round(score_size(int(metal_mask.sum())), 4)
-        result["en_score"] = round(score_electronegativity(metal_syms), 4)
-        result["intermediate_score"] = round(score_intermediate(atoms), 4)
-        result["surface_ratio"] = round(score_surface_ratio(metal_mask, metal_cn, metal_syms), 4)
-
-        total = sum(
-            WEIGHTS[k] * result[k]
-            for k in WEIGHTS
-        )
-        result["total_score"] = round(total * 100, 2)
-
-        if total * 100 >= 60:
-            result["label"] = "likely_active"
-        elif total * 100 >= 30:
-            result["label"] = "uncertain"
-        else:
-            result["label"] = "unlikely"
-
-    except Exception as e:
-        result["error"] = str(e)[:200]
-
-    return result
+def write_dimension_file(path):
+    with open(path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(["property", "meaning"])
+        for name, meaning in PROPERTY_COLUMNS:
+            writer.writerow([name, meaning])
 
 
 def main():
     data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
-    csv_in = os.path.join(data_dir, "_init_.csv")
-    csv_out = os.path.join(data_dir, "verify_results.csv")
+    if not os.path.exists(data_dir):
+        print(f"❌ 找不到 data 文件夹: {data_dir}")
+        return
 
-    # Collect CIF files from _init_.csv
-    cif_files = []
-    with open(csv_in, encoding="utf-8") as f:
-        for row in csv.DictReader(f):
-            fname = row.get("local_filename", "")
-            if fname:
-                fpath = os.path.join(data_dir, fname)
-                if os.path.exists(fpath):
-                    cif_files.append(fpath)
-
-    print(f"Verifying {len(cif_files)} CIF files ...")
-
-    fields = [
-        "filename", "n_atoms", "composition",
-        "metal_score", "d_band_proxy", "active_site_score",
-        "size_score", "en_score", "intermediate_score", "surface_ratio",
-        "total_score", "label", "error",
-    ]
+    csv_out = os.path.join(data_dir, "id_prop.csv")
+    dim_out = os.path.join(data_dir, "id_prop_dimensions.csv")
+    cif_files = glob.glob(os.path.join(data_dir, "*.cif"))
+    print(f"开始对 {len(cif_files)} 个团簇进行多维 CO2RR 描述符评估...")
 
     results = []
     for i, fpath in enumerate(cif_files):
-        r = verify_single(fpath)
-        results.append(r)
-        if (i + 1) % 100 == 0 or i == len(cif_files) - 1:
-            print(f"  [{i+1}/{len(cif_files)}] processed")
+        try:
+            basename, props = compute_properties(fpath)
+            if props is not None and props["total_score"] > 0.01:
+                results.append([basename] + [props[name] for name, _ in PROPERTY_COLUMNS])
+        except Exception:
+            pass
+        if (i + 1) % 500 == 0 or i == len(cif_files) - 1:
+            print(f"  [{i + 1}/{len(cif_files)}] 已处理")
 
     with open(csv_out, "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=fields)
-        w.writeheader()
-        w.writerows(results)
+        writer = csv.writer(f)
+        writer.writerow(["filename"] + [name for name, _ in PROPERTY_COLUMNS])
+        writer.writerows(results)
 
-    # Summary
-    from collections import Counter as C2
-    labels = C2(r["label"] for r in results)
-    print(f"\nResults written to {csv_out}")
-    print(f"Total: {len(results)}")
-    for label in ["likely_active", "uncertain", "unlikely", "error"]:
-        print(f"  {label}: {labels.get(label, 0)}")
+    write_dimension_file(dim_out)
 
-    scores = [r["total_score"] for r in results if r["label"] != "error"]
-    if scores:
-        print(f"  Score range: {min(scores):.1f} - {max(scores):.1f}, "
-              f"mean: {np.mean(scores):.1f}")
+    total_scores = [row[1] for row in results]
+    print("\n" + "=" * 40)
+    print(f"筛选完毕！生成有效数据: {len(results)} 条")
+    print(f"多维属性已保存为: {csv_out}")
+    print(f"维度说明已保存为: {dim_out}")
+    if total_scores:
+        print(f"total_score 范围: {min(total_scores):.3f} - {max(total_scores):.3f}, 平均分: {np.mean(total_scores):.3f}")
+    print("=" * 40)
 
 
 if __name__ == "__main__":

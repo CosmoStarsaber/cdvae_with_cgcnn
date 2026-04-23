@@ -14,6 +14,11 @@ from pymatgen.core import Structure, Lattice
 from pymatgen.core.periodic_table import Element
 from pymatgen.symmetry.analyzer import SpacegroupAnalyzer
 
+try:
+    from ase.io import read as ase_read
+except ModuleNotFoundError:
+    ase_read = None
+
 from diffusion_cdvae import DiffusionCDVAE
 
 warnings.filterwarnings("ignore")
@@ -22,41 +27,77 @@ class CO2RRCatalystDataset(Dataset):
     def __init__(self, root_dir: str, id_prop_csv: str = "id_prop.csv"):
         self.root_dir = root_dir
         self.entries = []
-        self.cache = {} 
+        self.cache = {}
         csv_path = os.path.join(root_dir, id_prop_csv)
         if not os.path.exists(csv_path): raise FileNotFoundError(f"找不到 {csv_path}")
 
-        with open(csv_path, "r") as f:
+        raw_entries = []
+        with open(csv_path, "r", encoding="utf-8") as f:
             for line in f:
                 line = line.strip()
                 if not line or not line[0].isalnum() or "id" in line.lower() or "filename" in line.lower(): continue
                 parts = [p.strip() for p in line.split(",")]
-                self.entries.append((parts[0], np.array([float(x) for x in parts[1:]], dtype=np.float32)))
-        
+                raw_entries.append((parts[0], np.array([float(x) for x in parts[1:]], dtype=np.float32)))
+
+        skipped = []
+        for cid, props in raw_entries:
+            struct_path = os.path.join(root_dir, cid if cid.lower().endswith('.cif') else f"{cid}.cif")
+            try:
+                self._load_structure_arrays(struct_path)
+                self.entries.append((cid, props))
+            except Exception as e:
+                skipped.append((cid, str(e)[:120]))
+
+        if not self.entries:
+            raise RuntimeError("没有可用于训练的有效 CIF 结构")
+
         all_props = np.array([e[1] for e in self.entries])
-        self.cond_dim = all_props.shape[1] 
-        self.prop_mean = all_props.mean(axis=0) 
-        self.prop_std = all_props.std(axis=0) + 1e-6 
+        self.cond_dim = all_props.shape[1]
+        self.prop_mean = all_props.mean(axis=0)
+        self.prop_std = all_props.std(axis=0) + 1e-6
+
+        if skipped:
+            print(f"⚠️ 跳过 {len(skipped)} 个无法解析的 CIF")
+            for cid, reason in skipped[:20]:
+                print(f"  - {cid}: {reason}")
+            if len(skipped) > 20:
+                print(f"  ... 其余 {len(skipped) - 20} 个已省略")
 
     def __len__(self): return len(self.entries)
 
-    def __getitem__(self, idx):
-        cid, props = self.entries[idx]
-        norm_props = (props - self.prop_mean) / self.prop_std 
-        
-        if cid not in self.cache:
-            struct = Structure.from_file(os.path.join(self.root_dir, f"{cid}.cif"))
+    def _load_structure_arrays(self, struct_path):
+        try:
+            struct = Structure.from_file(struct_path)
             lat = struct.lattice.matrix.astype(np.float32)
             fracs = np.array([s.frac_coords for s in struct]).astype(np.float32)
             species = np.array([s.specie.Z for s in struct], dtype=np.int64)
+            return lat, fracs, species
+        except Exception as first_error:
+            if ase_read is None:
+                raise first_error
+            atoms = ase_read(struct_path, format="cif")
+            lat = np.array(atoms.cell.array, dtype=np.float32)
+            frac = np.array(atoms.get_scaled_positions(wrap=False), dtype=np.float32)
+            numbers = np.array(atoms.get_atomic_numbers(), dtype=np.int64)
+            if len(numbers) == 0:
+                raise ValueError("Empty structure from ASE fallback")
+            return lat, frac, numbers
+
+    def __getitem__(self, idx):
+        cid, props = self.entries[idx]
+        norm_props = (props - self.prop_mean) / self.prop_std
+
+        if cid not in self.cache:
+            struct_path = os.path.join(self.root_dir, cid if cid.lower().endswith('.cif') else f"{cid}.cif")
+            lat, fracs, species = self._load_structure_arrays(struct_path)
             self.cache[cid] = (lat, fracs, species)
         else:
             lat, fracs, species = self.cache[cid]
-            
+
         return {"lattice": torch.tensor(lat), "fracs": torch.tensor(fracs), "species": torch.tensor(species), "props": torch.tensor(norm_props), "num_atoms": len(species)}
 
 def collate_fn(batch):
-    # 🌟 终极护盾：过滤掉原子数超过 500 的巨型团簇，彻底杜绝张量建图 OOM
+    # 终极护盾：过滤掉原子数超过 500 的巨型团簇，彻底杜绝张量建图 OOM
     batch = [b for b in batch if b['num_atoms'] <= 500]
     if not batch: return None # 如果这个 batch 全是巨型怪物，返回 None
 
@@ -73,7 +114,7 @@ def generate_co2rr_catalysts(model, optimal_props_norm, out_dir, n_samples=5, de
     os.makedirs(out_dir, exist_ok=True)
     model.eval()
     prefix = f"ep{epoch}_" if epoch is not None else "final_"
-    print(f"\n⚡ [{prefix.strip('_')}] 启动 CO2RR 潜空间活性飘移...")
+    print(f"\n[{prefix.strip('_')}] 启动 CO2RR 潜空间活性飘移...")
     
     z = torch.randn(n_samples, model.latent_dim, device=device, requires_grad=True)
     drift_target = torch.tensor([optimal_props_norm], dtype=torch.float32).expand(n_samples, -1).to(device)
@@ -122,7 +163,7 @@ def generate_co2rr_catalysts(model, optimal_props_norm, out_dir, n_samples=5, de
             struct.to(filename=os.path.join(out_dir, f"{prefix}co2rr_{i}.cif"))
             valid_count += 1
         except: pass
-    print(f"🎯 存活率: {valid_count}/{n_samples}\n")
+    print(f"存活率: {valid_count}/{n_samples}\n")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -140,7 +181,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    print(f"🚀 启动 CO2RR 团簇生成平台！计算设备: {device}")
+    print(f"启动 CO2RR 团簇生成平台！计算设备: {device}")
     
     dataset = CO2RRCatalystDataset(args.data)
     
@@ -172,7 +213,7 @@ if __name__ == "__main__":
         valid_batches = 0 # 记录有效批次
         
         for batch in train_loader:
-            if batch is None: continue # 🌟 核心防线：跳过包含全量巨型团簇的空 batch
+            if batch is None: continue # 核心防线：跳过包含全量巨型团簇的空 batch
             
             loss, logs = model.compute_loss(batch, device, epoch) 
             optimizer.zero_grad()
@@ -193,7 +234,7 @@ if __name__ == "__main__":
         valid_val_batches = 0
         with torch.no_grad():
             for batch in val_loader:
-                if batch is None: continue # 🌟 核心防线
+                if batch is None: continue # 核心防线
                 
                 loss, logs = model.compute_loss(batch, device, epoch)
                 valid_val_batches += 1
@@ -211,9 +252,12 @@ if __name__ == "__main__":
             torch.save(checkpoint_data, os.path.join(args.save_dir, "best_checkpoint.pt"))
             
         if args.sample_every > 0 and (epoch + 1) % args.sample_every == 0:
-            generate_co2rr_catalysts(model, norm_targets.tolist(), "generated_co2rr_cifs", n_samples=3, device=device, guidance_scale=args.guidance_scale, temperature=args.temperature, epoch=epoch+1)
+            try:
+                generate_co2rr_catalysts(model, norm_targets.tolist(), "generated_co2rr_cifs", n_samples=3, device=device, guidance_scale=args.guidance_scale, temperature=args.temperature, epoch=epoch+1)
+            except Exception as e:
+                print(f"采样生成失败（已跳过）: {e}")
 
-    print("\n" + "="*50 + "\n🔥 训练完毕，执行大批量生成\n" + "="*50)
+    print("\n" + "="*50 + "\n训练完毕，执行大批量生成\n" + "="*50)
     if os.path.exists(os.path.join(args.save_dir, "best_checkpoint.pt")):
         model.load_state_dict(torch.load(os.path.join(args.save_dir, "best_checkpoint.pt"), map_location=device, weights_only=False)['model_state_dict'])
     generate_co2rr_catalysts(model, norm_targets.tolist(), "generated_co2rr_cifs", n_samples=20, device=device, guidance_scale=args.guidance_scale, temperature=args.temperature, epoch=None)

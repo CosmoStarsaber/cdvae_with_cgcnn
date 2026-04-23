@@ -149,7 +149,12 @@ class DiffusionCDVAE(nn.Module):
         )
 
         total_loss = loss_diff_pure + 5.0 * l_rep + 0.5 * loss_prop + 0.1 * loss_lattice + 0.001 * loss_length + 0.5 * loss_species + kl_weight * loss_kl
-        
-        loss_dict = {"loss_total": total_loss, "loss_diff": loss_diff_pure.item(), "loss_prop": loss_prop.item(), 
-                     "loss_rep": l_rep.item(), "loss_kl": loss_kl.item()}
+
+        loss_dict = {
+            "loss_total": float(total_loss.detach().item()),
+            "loss_diff": float(loss_diff_pure.detach().item()),
+            "loss_prop": float(loss_prop.detach().item()),
+            "loss_rep": float(l_rep.detach().item()) if torch.is_tensor(l_rep) else float(l_rep),
+            "loss_kl": float(loss_kl.detach().item()),
+        }
         return total_loss, loss_dict

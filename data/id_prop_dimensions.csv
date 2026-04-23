@@ -1,0 +1,10 @@
+property,meaning
+total_score,加权 CO2RR 活性代理总分，综合金属成分、电子结构/位点和尺寸，范围 0-1
+metal_score,金属成分得分：活性金属占比越高越接近 1，范围 0-1
+d_band_score,d-band 代理得分：越接近经验吸附窗口越高，范围 0-1
+undercoord_fraction,低配位金属原子比例，表示潜在暴露活性位点密度，范围 0-1
+size_score,团簇尺寸适宜性得分：越接近经验活性窗口越高，范围 0-1
+active_metal_fraction,核心活性金属 Cu/Ag/Au/Zn 在金属原子中的占比，范围 0-1
+alloy_metal_fraction,合金辅助活性金属在金属原子中的占比，范围 0-1
+metal_atom_fraction,全结构中金属原子占比，反映团簇金属核相对有机配体的占比，范围 0-1
+mean_metal_en,金属原子平均电负性（Pauling 标度），非归一化实数
