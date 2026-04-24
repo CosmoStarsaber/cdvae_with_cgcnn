@@ -19,7 +19,11 @@
       "Bash(curl -I -L -s \"https://www.rsc.org/suppdata/d4/mh/d4mh01324g/d4mh01324g2.cif\")",
       "Bash(curl -I -L -s \"https://www.rsc.org/suppdata/d4/qi/d4qi03264k/d4qi03264k2.cif\")",
       "Bash(KMP_DUPLICATE_LIB_OK=TRUE OMP_NUM_THREADS=4 python *)",
-      "Bash(PYTHONIOENCODING=utf-8 KMP_DUPLICATE_LIB_OK=TRUE OMP_NUM_THREADS=4 python *)"
+      "Bash(PYTHONIOENCODING=utf-8 KMP_DUPLICATE_LIB_OK=TRUE OMP_NUM_THREADS=4 python *)",
+      "Bash(claude *)",
+      "Skill(update-config)",
+      "Edit",
+      "Write"
     ]
   }
 }
